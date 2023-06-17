@@ -1,8 +1,63 @@
 <!DOCTYPE html>
 <html>
-    <head>
-    </head>
-    <body>
-        <script src="./app.js"></script>
-    </body>
+<head>
+    <title><b>E-Voting System</b></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .vote-count {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the E-Voting System</h1>
+    <p>Please cast your vote for one of the candidates:</p>
+    
+    
+        <input type="radio" name="candidate" value="candidate1" id="candidate1"> Candidate 1<br>
+        <input type="radio" name="candidate" value="candidate2" id="candidate2"> Candidate 2<br>
+        <input type="radio" name="candidate" value="candidate3" id="candidate3"> Candidate 3<br><br>
+        <button title="Submit!" onclick="vote()"><h5>Submit</h5></button>
+        <!--<input type="submit" value="Submit Vote">-->
+    
+
+    <div class="vote-count">
+        <h2>Current Vote Count:</h2>
+        <p>Candidate 1: <span id="candidate1-votes">0</span> votes</p>
+        <p>Candidate 2: <span id="candidate2-votes">0</span> votes</p>
+        <p>Candidate 3: <span id="candidate3-votes">0</span> votes</p>
+    </div>
+
+    <script src="./app.js"></script>
+
+    <!--<script>
+        // Example code to update the vote count using JavaScript
+        // Replace with server-side logic in a real implementation
+
+        // Function to update the vote count
+        function updateVoteCount(candidate, count) {
+            const voteCountElement = document.getElementById(`${candidate}-votes`);
+            if (voteCountElement) {
+                voteCountElement.innerText = count;
+            }
+        }
+
+        // Example code to simulate vote count updates
+        // You would need to replace this with actual vote count data
+        setInterval(() => {
+            // Simulating vote count updates
+            const candidate1Votes = Math.floor(Math.random() * 100);
+            const candidate2Votes = Math.floor(Math.random() * 100);
+            const candidate3Votes = Math.floor(Math.random() * 100);
+
+            // Update the vote count display
+            updateVoteCount("candidate1", candidate1Votes);
+            updateVoteCount("candidate2", candidate2Votes);
+            updateVoteCount("candidate3", candidate3Votes);
+        }, 3000); // Update every 3 seconds (for demonstration purposes)
+    </script>-->
+</body>
 </html>
