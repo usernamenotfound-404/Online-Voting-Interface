@@ -21,16 +21,22 @@ function updateVoteCount(candidate, count) {
 }
 
 function vote(){
-    for(var i=1;i<(candidates.length+1);i++){
-        if((document.getElementById(`candidate${i}`).checked)==true){
-            votes[i-1]+=1;
-        }
+    if(voted==false){
+        for(var i=1;i<(candidates.length+1);i++){
+            if((document.getElementById(`candidate${i}`).checked)==true){
+                votes[i-1]+=1;
+            }
 
-        const voteCountElement = document.getElementById(`candidate${i}-votes`);
-        if (voteCountElement!=null && voteCountElement!=undefined) {
-            voteCountElement.innerText = votes[i-1];
-        }
+            const voteCountElement = document.getElementById(`candidate${i}-votes`);
+            if (voteCountElement!=null && voteCountElement!=undefined) {
+                voteCountElement.innerText = votes[i-1];
+            }
 
+        }
+        voted=true;
+    }
+    else{
+        alert("You've already voted!");
     }
     console.log(votes)
 }
