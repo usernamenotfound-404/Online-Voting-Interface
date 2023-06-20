@@ -17,11 +17,10 @@
     <p>Please cast your vote for one of the candidates:</p>
     
     
-        <input type="radio" name="candidate" value="candidate1" id="candidate1"> Candidate 1<br>
-        <input type="radio" name="candidate" value="candidate2" id="candidate2"> Candidate 2<br>
-        <input type="radio" name="candidate" value="candidate3" id="candidate3"> Candidate 3<br><br>
-        <button title="Submit!" onclick="vote()"><h5>Submit</h5></button>
-        <!--<input type="submit" value="Submit Vote">-->
+    <input type="radio" name="candidate" value="candidate1" id="candidate1"> Candidate 1<br>
+    <input type="radio" name="candidate" value="candidate2" id="candidate2"> Candidate 2<br>
+    <input type="radio" name="candidate" value="candidate3" id="candidate3"> Candidate 3<br><br>
+    <button title="Submit!" onclick="vote()"><h5>Submit</h5></button>
     
 
     <div class="vote-count">
@@ -34,30 +33,21 @@
     <script src="./app.js"></script>
 
     <!--<script>
-        // Example code to update the vote count using JavaScript
-        // Replace with server-side logic in a real implementation
-
-        // Function to update the vote count
         function updateVoteCount(candidate, count) {
             const voteCountElement = document.getElementById(`${candidate}-votes`);
             if (voteCountElement) {
                 voteCountElement.innerText = count;
             }
         }
+        // Simulating vote count updates
+        var candidate1Votes = votes[0];
+        var candidate2Votes = votes[1];
+        var candidate3Votes = votes[2];
 
-        // Example code to simulate vote count updates
-        // You would need to replace this with actual vote count data
-        setInterval(() => {
-            // Simulating vote count updates
-            const candidate1Votes = Math.floor(Math.random() * 100);
-            const candidate2Votes = Math.floor(Math.random() * 100);
-            const candidate3Votes = Math.floor(Math.random() * 100);
-
-            // Update the vote count display
-            updateVoteCount("candidate1", candidate1Votes);
-            updateVoteCount("candidate2", candidate2Votes);
-            updateVoteCount("candidate3", candidate3Votes);
-        }, 3000); // Update every 3 seconds (for demonstration purposes)
+        // Update the vote count display
+        updateVoteCount("candidate1", candidate1Votes);
+        updateVoteCount("candidate2", candidate2Votes);
+        updateVoteCount("candidate3", candidate3Votes);
     </script>-->
 </body>
 </html>
