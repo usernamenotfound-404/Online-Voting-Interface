@@ -11,16 +11,25 @@
             margin-top: 20px;
         }
     </style>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <h1>Welcome to the E-Voting System</h1>
     <p>Please cast your vote for one of the candidates:</p>
+
     
     
-    <input type="radio" name="candidate" value="candidate1" id="candidate1"> Candidate 1<br>
-    <input type="radio" name="candidate" value="candidate2" id="candidate2"> Candidate 2<br>
-    <input type="radio" name="candidate" value="candidate3" id="candidate3"> Candidate 3<br><br>
-    <button title="Submit!" onclick="vote()"><h5>Submit</h5></button>
+    <ul><button class="button"><input type="radio" name="candidate" value="candidate1" id="candidate1" class="candidate-button" > Candidate 1<br></button></ul>
+    
+    <ul><button class="button"><input type="radio" name="candidate" value="candidate2" id="candidate2" class="candidate-button"> Candidate 2<br></button></ul>
+
+    <ul><button class="button"><input type="radio" name="candidate" value="candidate3" id="candidate3" class="candidate-button"> Candidate 3<br></button></ul>
+
+    <ul></ul>
+    
+    <ul><button title="Submit!" onclick="vote()"><h5>Submit</h5></button></ul>
+
+    
     
 
     <div class="vote-count">
