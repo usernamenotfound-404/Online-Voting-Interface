@@ -32,11 +32,24 @@ function vote(){
                 voteCountElement.innerText = votes[i-1];
             }
 
+            if((document.getElementById(`candidate${i}`).checked)==true){
+                voted=true;
+            }
+
         }
-        voted=true;
+        
     }
     else{
         alert("You've already voted!");
     }
     console.log(votes)
 }
+
+function toggleText() {
+    var hiddenText = document.getElementById("hidden-text");
+    if (hiddenText.style.display === "none") {
+      hiddenText.style.display = "block";
+    } else {
+      hiddenText.style.display = "none";
+    }
+  }

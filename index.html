@@ -14,29 +14,35 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <h1>Welcome to the E-Voting System</h1>
-    <p>Please cast your vote for one of the candidates:</p>
+    <h1 style="text-align: center;font-size: 28px; color: #333; margin-bottom: 10px;">Welcome to the E-Voting System</h1>
+    <p style="text-align: center; font-size: 18px; color: #666;">Please cast your vote for one of the candidates:</p>
 
+    <div class="centered-div">
     
-    
-    <ul><button class="button"><input type="radio" name="candidate" value="candidate1" id="candidate1" class="candidate-button" > Candidate 1<br></button></ul>
-    
-    <ul><button class="button"><input type="radio" name="candidate" value="candidate2" id="candidate2" class="candidate-button"> Candidate 2<br></button></ul>
+        <ul>
+            <button class="button"><input type="radio" name="candidate" value="candidate1" id="candidate1" class="candidate-button"> Candidate 1<br></button>
+            <button class="button"><input type="radio" name="candidate" value="candidate2" id="candidate2" class="candidate-button"> Candidate 2<br></button>
+        </ul>
 
-    <ul><button class="button"><input type="radio" name="candidate" value="candidate3" id="candidate3" class="candidate-button"> Candidate 3<br></button></ul>
+        <ul>
+            <button class="button"><input type="radio" name="candidate" value="candidate3" id="candidate3" class="candidate-button"> Candidate 3<br></button>
+            <button class="button"><input type="radio" name="candidate" value="candidate3" id="candidate3" class="candidate-button"> Candidate 3<br></button>
+        </ul>
 
-    <ul></ul>
-    
-    <ul><button title="Submit!" onclick="vote()"><h5>Submit</h5></button></ul>
+        <ul></ul>
+        
+        <ul><button title="Submit!" onclick="vote()" class="submit-button"><h5>Submit</h5></button></ul>
 
+    </div>
     
-    
-
-    <div class="vote-count">
-        <h2>Current Vote Count:</h2>
-        <p>Candidate 1: <span id="candidate1-votes">0</span> votes</p>
-        <p>Candidate 2: <span id="candidate2-votes">0</span> votes</p>
-        <p>Candidate 3: <span id="candidate3-votes">0</span> votes</p>
+    <button class="toggle-button" onclick="toggleText()">Show Votes</button>
+    <div id="hidden-text" style="display: none;">
+        <div>
+            <h2>Current Vote Count:</h2>
+            <p>Candidate 1: <span id="candidate1-votes">0</span> votes</p>
+            <p>Candidate 2: <span id="candidate2-votes">0</span> votes</p>
+            <p>Candidate 3: <span id="candidate3-votes">0</span> votes</p>
+        </div>
     </div>
 
     <script src="./app.js"></script>
