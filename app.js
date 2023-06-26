@@ -1,35 +1,37 @@
-var candidates=[1,2,3]
-var votes=[]
+var candidates=[[1,2,3],[1,2,3]]
+var votes=[[],[]]
 
 var voted=false;
 
 var state=null;
 
-function createVoteList(candidates,votes){
+var voteCount={
+    'headboy':votes[0],
+    'headgirl':votes[1],
+    'sports_capt_boy':votes[2],
+    'sports_capt_girl':votes[3],
+}
+
+function createVoteList(candidates,index,votes){
     for(i=0;i<candidates.length;i++){
-        votes[i]=0;
+        votes[i]=[];
+        for(j=0;j<candidates[index].length;j++){
+            votes[i][j]=0;
+        }
     }
 }
-createVoteList(candidates,votes);
+createVoteList(candidates,0,votes);
 
-function updateVoteCount(candidate, count) {
-    const voteCountElement = document.getElementById(`candidate1-votes`);
-
-    if (voteCountElement!=null && voteCountElement!=undefined) {
-        voteCountElement.innerText = votes[1];
-    }
-}
-
-function vote(){
+function vote(index){
     if(voted==false){
-        for(var i=1;i<(candidates.length+1);i++){
+        for(var i=1;i<(candidates[index].length+1);i++){
             if((document.getElementById(`candidate${i}`).checked)==true){
-                votes[i-1]+=1;
+                votes[index][i-1]+=1;
             }
 
             const voteCountElement = document.getElementById(`candidate${i}-votes`);
             if (voteCountElement!=null && voteCountElement!=undefined) {
-                voteCountElement.innerText = votes[i-1];
+                voteCountElement.innerText = votes[index][i-1];
             }
 
             if((document.getElementById(`candidate${i}`).checked)==true){

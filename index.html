@@ -20,49 +20,17 @@
     <div class="centered-div">
     
         <ul>
-            <button class="button"><input type="radio" name="candidate" value="candidate1" id="candidate1" class="candidate-button"> Candidate 1<br></button>
-            <button class="button"><input type="radio" name="candidate" value="candidate2" id="candidate2" class="candidate-button"> Candidate 2<br></button>
+        </button><a href="./pages/headboy.html"><button class="button">HeadBoi</button></a>
         </ul>
 
         <ul>
-            <button class="button"><input type="radio" name="candidate" value="candidate3" id="candidate3" class="candidate-button"> Candidate 3<br></button>
-            <button class="button"><input type="radio" name="candidate" value="candidate3" id="candidate3" class="candidate-button"> Candidate 3<br></button>
+            <a href="./pages/headgirl.html"><button class="button">HeadGirl</button></a>        
         </ul>
 
         <ul></ul>
-        
-        <ul><button title="Submit!" onclick="vote()" class="submit-button"><h5>Submit</h5></button></ul>
 
-    </div>
-    
-    <button class="toggle-button" onclick="toggleText()">Show Votes</button>
-    <div id="hidden-text" style="display: none;">
-        <div>
-            <h2>Current Vote Count:</h2>
-            <p>Candidate 1: <span id="candidate1-votes">0</span> votes</p>
-            <p>Candidate 2: <span id="candidate2-votes">0</span> votes</p>
-            <p>Candidate 3: <span id="candidate3-votes">0</span> votes</p>
-        </div>
     </div>
 
     <script src="./app.js"></script>
-
-    <!--<script>
-        function updateVoteCount(candidate, count) {
-            const voteCountElement = document.getElementById(`${candidate}-votes`);
-            if (voteCountElement) {
-                voteCountElement.innerText = count;
-            }
-        }
-        // Simulating vote count updates
-        var candidate1Votes = votes[0];
-        var candidate2Votes = votes[1];
-        var candidate3Votes = votes[2];
-
-        // Update the vote count display
-        updateVoteCount("candidate1", candidate1Votes);
-        updateVoteCount("candidate2", candidate2Votes);
-        updateVoteCount("candidate3", candidate3Votes);
-    </script>-->
 </body>
 </html>
