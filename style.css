@@ -17,6 +17,109 @@
   transition: background-color 0.3s ease;
 }
 
+body {
+  background-color: #F2F2F2;
+  text-align: center;
+  font-family: Segoe UI, sans-serif;
+}
+
+h1 {
+  font-size: 32px;
+  margin: 20px 0;
+  color: #1779BA;
+}
+
+.tab-button {
+  display: inline-block;
+  width: 120px;
+  height: 40px;
+  background-color: #F2F2F2;
+  color: #000;
+  font-size: 16px;
+  margin: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+  .tab-button.active {
+      background-color: #1779BA;
+      color: #FFF;
+  }
+
+  .tab-button:hover {
+      background-color: #C4E2F3;
+  }
+
+.candidate-button {
+  display: inline-block;
+  width: 180px;
+  height: 60px;
+  background-color: #F2F2F2;
+  color: #000;
+  font-size: 18px;
+  margin: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+  .candidate-button.active {
+      background-color: #1779BA;
+      color: #FFF;
+  }
+
+  .candidate-button:hover {
+      background-color: #C4E2F3;
+  }
+
+.submit-button {
+  display: block;
+  width: 200px;
+  height: 40px;
+  background-color: #1779BA;
+  color: #FFF;
+  font-size: 18px;
+  margin: 20px auto;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+  .submit-button:hover {
+      background-color: #0C5DA5;
+  }
+
+.success-message {
+  font-size: 18px;
+  color: #1779BA;
+  margin-top: 10px;
+}
+
+.error-message {
+  font-size: 18px;
+  color: #FF0000;
+  margin-top: 10px;
+}
+
+.vote-count {
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.windows11-border {
+  border: 1px solid #C4C4C4;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #FFF;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
 .button:hover {
   background-color: #45a049;
 }

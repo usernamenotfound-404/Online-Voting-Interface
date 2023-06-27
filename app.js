@@ -1,16 +1,60 @@
-var candidates=[[1,2,3],[1,2,3]]
+var candidates=[[1,2,3,4],[1,2,3,4]]
 var votes=[[],[]]
 
 var voted=false;
 
 var state=null;
 
-var voteCount={
-    'headboy':votes[0],
-    'headgirl':votes[1],
-    'sports_capt_boy':votes[2],
-    'sports_capt_girl':votes[3],
-}
+var candidateVotes = {
+    "Head Boy": {
+        "Candidate 1": 0,
+        "Candidate 2": 0,
+        "Candidate 3": 0,
+        "Candidate 4": 0
+    },
+    "Head Girl": {
+        "Candidate 1": 0,
+        "Candidate 2": 0,
+        "Candidate 3": 0,
+        "Candidate 4": 0
+    },
+    "Sports Captain": {
+        "Candidate 1": 0,
+        "Candidate 2": 0,
+        "Candidate 3": 0,
+        "Candidate 4": 0
+    },
+    "Knights Captain": {
+        "Candidate 1": 0,
+        "Candidate 2": 0,
+        "Candidate 3": 0,
+        "Candidate 4": 0
+    },
+    "Spartans Captain": {
+        "Candidate 1": 0,
+        "Candidate 2": 0,
+        "Candidate 3": 0,
+        "Candidate 4": 0
+    },
+    "Vikings Captain": {
+        "Candidate 1": 0,
+        "Candidate 2": 0,
+        "Candidate 3": 0,
+        "Candidate 4": 0
+    },
+    "Samurais Captain": {
+        "Candidate 1": 0,
+        "Candidate 2": 0,
+        "Candidate 3": 0,
+        "Candidate 4": 0
+    },
+    "CCA Captain": {
+        "Candidate 1": 0,
+        "Candidate 2": 0,
+        "Candidate 3": 0,
+        "Candidate 4": 0
+    }
+};
 
 function createVoteList(candidates,index,votes){
     for(i=0;i<candidates.length;i++){
@@ -21,6 +65,7 @@ function createVoteList(candidates,index,votes){
     }
 }
 createVoteList(candidates,0,votes);
+createVoteList(candidates,1,votes);
 
 function vote(index){
     if(voted==false){
@@ -55,3 +100,9 @@ function toggleText() {
       hiddenText.style.display = "none";
     }
   }
+
+function saveVotes() {
+    var votesJson = JSON.stringify(candidateVotes);
+    var blob = new Blob([votesJson], { type: "application/json" });
+    saveAs(blob, "votes.json");
+}
