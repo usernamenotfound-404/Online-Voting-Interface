@@ -1,93 +1,167 @@
-var candidates=[[1,2,3,4],[1,2,3,4]]
-var votes=[[],[]]
+var candidates=[
+    [1,2,3,4],
+    [1,2,3,4],
+    [1,2,3,4],[5,6,7,8],
+    [1,2,3,4],[5,6,7,8],
+    [1,2,3,4],[5,6,7,8],
+    [1,2,3,4],[5,6,7,8],
+    [1,2,3,4],[5,6,7,8],
+    [1,2,3,4],[5,6,7,8],
 
-var voted=false;
+];
+var votes=[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
+
+var voted=[];
 
 var state=null;
-
-var candidateVotes = {
-    "Head Boy": {
-        "Candidate 1": 0,
-        "Candidate 2": 0,
-        "Candidate 3": 0,
-        "Candidate 4": 0
-    },
-    "Head Girl": {
-        "Candidate 1": 0,
-        "Candidate 2": 0,
-        "Candidate 3": 0,
-        "Candidate 4": 0
-    },
-    "Sports Captain": {
-        "Candidate 1": 0,
-        "Candidate 2": 0,
-        "Candidate 3": 0,
-        "Candidate 4": 0
-    },
-    "Knights Captain": {
-        "Candidate 1": 0,
-        "Candidate 2": 0,
-        "Candidate 3": 0,
-        "Candidate 4": 0
-    },
-    "Spartans Captain": {
-        "Candidate 1": 0,
-        "Candidate 2": 0,
-        "Candidate 3": 0,
-        "Candidate 4": 0
-    },
-    "Vikings Captain": {
-        "Candidate 1": 0,
-        "Candidate 2": 0,
-        "Candidate 3": 0,
-        "Candidate 4": 0
-    },
-    "Samurais Captain": {
-        "Candidate 1": 0,
-        "Candidate 2": 0,
-        "Candidate 3": 0,
-        "Candidate 4": 0
-    },
-    "CCA Captain": {
-        "Candidate 1": 0,
-        "Candidate 2": 0,
-        "Candidate 3": 0,
-        "Candidate 4": 0
-    }
-};
 
 function createVoteList(candidates,index,votes){
     for(i=0;i<candidates.length;i++){
         votes[i]=[];
         for(j=0;j<candidates[index].length;j++){
             votes[i][j]=0;
+            voted[i]=false;
         }
     }
 }
 createVoteList(candidates,0,votes);
 createVoteList(candidates,1,votes);
+createVoteList(candidates,2,votes);
+createVoteList(candidates,3,votes);
+createVoteList(candidates,4,votes);
+createVoteList(candidates,5,votes);
+createVoteList(candidates,6,votes);
+createVoteList(candidates,7,votes);
+createVoteList(candidates,8,votes);
+createVoteList(candidates,9,votes);
+createVoteList(candidates,10,votes);
+createVoteList(candidates,11,votes);
+createVoteList(candidates,12,votes);
+createVoteList(candidates,13,votes);
+
+function createPersistentCookie(cookieName, arrayData, expirationDays) {
+    var expirationDate = new Date();
+    expirationDate.setDate(expirationDate.getDate() + expirationDays);
+
+    var serializedData = JSON.stringify(arrayData);
+  
+    document.cookie = cookieName + "=" + encodeURIComponent(serializedData) + "; expires=" + expirationDate.toUTCString();
+}
+
+
+function getCookieData(cookieName) {
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var cookieArray = decodedCookie.split(";");
+  
+    for (var i = 0; i < cookieArray.length; i++) {
+      var cookie = cookieArray[i].trim();
+      
+      if (cookie.indexOf(cookieName + "=") === 0) {
+        var cookieValue = cookie.slice(cookieName.length + 1);
+        return JSON.parse(cookieValue);
+      }
+    }
+  
+    return null;
+  }
+
+function syncVotes(action){
+
+    if(!document.cookie){
+        createPersistentCookie("CrispBiscuit", votes, 69);
+        createPersistentCookie("BakedWafers", voted, 69);
+    }
+
+    for(index=0;index<candidates.length;index++){
+        for(var i=(candidates[index][0]);i<=(candidates[index][candidates[index].length-1]);i++){
+            updateVoteCount(index,i);
+        }
+    }
+
+    if(action=="down"){
+        var cd=getCookieData("CrispBiscuit");
+        var cd2=getCookieData("BakedWafers");
+        votes=cd;
+        voted=cd2;
+        console.log(votes);
+    }
+    if(action=="up"){
+        createPersistentCookie("CrispBiscuit", votes, 69);
+        createPersistentCookie("BakedWafers", voted, 69);
+        console.log(document.cookie);
+        console.log(votes);
+    }
+
+}
+
+function updateVoteCount(index,i){
+    const voteCountElement = document.getElementById(`candidate${i}-votes`);
+            if (voteCountElement!=null && voteCountElement!=undefined) {
+                if(i<=4){
+                    voteCountElement.innerText = votes[index][i-1];
+                }
+                else if(i>=5){
+                    voteCountElement.innerText = votes[index][i-5];
+                }
+            }
+}
+
+function resetVotes(){
+    votes=[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
+    voted=[];
+    createVoteList(candidates,0,votes);
+    createVoteList(candidates,1,votes);
+    createVoteList(candidates,2,votes);
+    createVoteList(candidates,3,votes);
+    createVoteList(candidates,4,votes);
+    createVoteList(candidates,5,votes);
+    createVoteList(candidates,6,votes);
+    createVoteList(candidates,7,votes);
+    createVoteList(candidates,8,votes);
+    createVoteList(candidates,9,votes);
+    createVoteList(candidates,10,votes);
+    createVoteList(candidates,11,votes);
+    createVoteList(candidates,12,votes);
+    createVoteList(candidates,13,votes);
+
+    createPersistentCookie("CrispBiscuit", votes, 69);
+    createPersistentCookie("BakedWafers", voted, 69);
+
+    location.reload();
+
+}
 
 function vote(index){
-    if(voted==false){
-        for(var i=1;i<(candidates[index].length+1);i++){
+    syncVotes("down");
+    if(voted[index]==false){
+        for(var i=(candidates[index][0]);i<=(candidates[index][candidates[index].length-1]);i++){
+            console.log("BP0");
             if((document.getElementById(`candidate${i}`).checked)==true){
-                votes[index][i-1]+=1;
+                if(i<=4){
+                    votes[index][i-1]+=1;
+                    //alert(`Voted for Candidate ${i} successfully!`);
+                }
+                else if(i>=5){
+                    votes[index][i-5]+=1;
+                }
+
+                document.getElementById('success-message').innerText = `Voted for candidate ${i} successfully!`;
+                document.getElementById('error-message').innerText = '';
+
+                voted[index]=true;
+
+                syncVotes("up");
             }
 
-            const voteCountElement = document.getElementById(`candidate${i}-votes`);
-            if (voteCountElement!=null && voteCountElement!=undefined) {
-                voteCountElement.innerText = votes[index][i-1];
-            }
-
-            if((document.getElementById(`candidate${i}`).checked)==true){
-                voted=true;
-            }
+            updateVoteCount(index,i);
 
         }
         
     }
     else{
-        alert("You've already voted!");
+        //alert("You've already voted!");
+        document.getElementById('error-message').innerText = 'You have already voted!';
+        document.getElementById('success-message').innerText = '';
     }
     console.log(votes)
 }
@@ -102,7 +176,20 @@ function toggleText() {
   }
 
 function saveVotes() {
-    var votesJson = JSON.stringify(candidateVotes);
+    var votesJson = JSON.stringify(votes);
     var blob = new Blob([votesJson], { type: "application/json" });
     saveAs(blob, "votes.json");
 }
+
+/*function getCookieData(cookieName) {
+    var cookies = document.cookie.split("; ");
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i].split("=");
+      if (cookie[0] === cookieName) {
+        var decodedData = decodeURIComponent(cookie[1]);
+        var arrayData = JSON.parse(decodedData);
+        return arrayData;
+      }
+    }
+    return arrayData;
+}*/

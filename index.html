@@ -6,13 +6,14 @@
         body {
             font-family: Arial, sans-serif;
         }
-
         .vote-count {
             font-weight: bold;
             margin-top: 20px;
         }
     </style>
     <link rel="stylesheet" href="./style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <script src="./app.js"></script>
 </head>
 <body>
@@ -35,19 +36,34 @@
         <p id="error-message"></p>
     </div>
 
-    <div class="windows11-border">
-        <h1>Choose the post to vote for</h1>
-        <div id="tabs">
-            <a href="./pages/headboy.html"><button class="tab-button active">Head Boy</button></a>
-            <a href="./pages/headgirl.html"><button class="tab-button active">Head Girl</button></a>
-            <a href="./pages/CCA Captain.html"><button class="tab-button active">CCA Captain</button></a>
-            <a href="./pages/Samurais Captain.html"><button class="tab-button active">Samurais Captain</button></a>
-            <a href="./pages/Vikings Captain.html"><button class="tab-button active">Vikings Captain</button></a>
-            <a href="./pages/Spartans Captain.html"><button class="tab-button active">Spartans Captain</button></a>
-            <a href="./pages/Knights Captain.html"><button class="tab-button active">Knights Captain</button></a>
+        <div class="windows11-border">
+            <h1>Choose the post to vote for</h1>
+            <div id="tabs">
+                <hr>
 
-        </div>
+                <div>
+                <a href="./pages/headboy.html"><button class="tab-button active">Head Boy</button></a>
+                <a href="./pages/headgirl.html"><button class="tab-button active">Head Girl</button></a>
+                </div>
+                <hr>
+
+                <div>
+                <a href="./pages/sportscapt.html"><button class="tab-button active">Sports Captain</button></a>
+                <a href="./pages/ccacapt.html"><button class="tab-button active">CCA Captain</button></a>
+                </div>
+                <hr>
+
+                <div>
+                <a href="./pages/knights.html"><button class="tab-button active">Knights Captain</button></a>
+                <a href="./pages/samurais.html"><button class="tab-button active">Samurais Captain</button></a>
+                </div>
+                <div>
+                <a href="./pages/spartans.html"><button class="tab-button active">Spartans Captain</button></a>
+                <a href="./pages/vikings.html"><button class="tab-button active">Vikings Captain</button></a>
+                </div>
+                <hr>
+            </div>
 
 
-</body>
+    </body>
 </html>

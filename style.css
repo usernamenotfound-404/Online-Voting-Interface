@@ -52,46 +52,34 @@ h1 {
       background-color: #C4E2F3;
   }
 
-.candidate-button {
-  display: inline-block;
-  width: 180px;
-  height: 60px;
-  background-color: #F2F2F2;
-  color: #000;
-  font-size: 18px;
-  margin: 10px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-  .candidate-button.active {
-      background-color: #1779BA;
-      color: #FFF;
+  .candidate-button {
+    display: inline-block;
+    width: 180px;
+    height: 60px;
+    background-color: #F2F2F2;
+    color: #000;
+    font-size: 18px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, filter 0.3s;
   }
-
+  
+  .candidate-button:active {
+    background-color: #1779BA;
+    color: #FFF;
+    filter: brightness(0.8);
+  }
+  
   .candidate-button:hover {
-      background-color: #C4E2F3;
+    background-color: #C4E2F3;
+  }
+  .candidate-button.clicked {
+    background-color: #3f903fdf;
+    color: #fff000;
   }
 
-.submit-button {
-  display: block;
-  width: 200px;
-  height: 40px;
-  background-color: #1779BA;
-  color: #FFF;
-  font-size: 18px;
-  margin: 20px auto;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-  .submit-button:hover {
-      background-color: #0C5DA5;
-  }
 
 .success-message {
   font-size: 18px;
@@ -150,6 +138,13 @@ h1 {
   outline: none;
   box-shadow: 0 0 5px #3498db;
 }
+
+.submit-button:active {
+  outline: none;
+  background-color: #21618c;
+  box-shadow: 0 0 5px #3498db;
+}
+
 
 /*.centered-div {
   position: absolute;
