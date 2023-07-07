@@ -131,6 +131,13 @@ function resetVotes(){
 
 }
 
+function resetVoted(){
+    voted=[false,false,false,false,false,false,false,false,false,false,false,false,false,false];
+     createPersistentCookie("BakedWafers", voted, 69);
+
+    location.reload();
+}
+
 function vote(index){
     syncVotes("down");
     if(voted[index]==false){
