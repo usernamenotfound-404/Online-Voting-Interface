@@ -169,6 +169,12 @@ function vote(index){
         //alert("You've already voted!");
         document.getElementById('error-message').innerText = 'You have already voted!';
         document.getElementById('success-message').innerText = '';
+        for(var i=(candidates[index][0]);i<=(candidates[index][candidates[index].length-1]);i++){
+            updateVoteCount(index,i);
+        }
+    }
+    for(var i=(candidates[index][0]);i<=(candidates[index][candidates[index].length-1]);i++){
+            updateVoteCount(index,i);
     }
     console.log(votes)
 }
