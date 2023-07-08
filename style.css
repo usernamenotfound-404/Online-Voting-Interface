@@ -33,7 +33,7 @@ h1 {
   display: inline-block;
   width: 120px;
   height: 40px;
-  background-color: #F2F2F2;
+  background-color: #ffffff;
   color: #000;
   font-size: 16px;
   margin: 10px;
@@ -56,28 +56,31 @@ h1 {
     display: inline-block;
     width: 180px;
     height: 60px;
-    background-color: #F2F2F2;
+    background-color: #ffffff;
     color: #000;
     font-size: 18px;
     margin: 10px;
     border: none;
-    border-radius: 8px;
+    border-radius: 23px;
     cursor: pointer;
     transition: background-color 0.3s, filter 0.3s;
+    box-shadow: 0 0 2px #3498db
+
   }
   
   .candidate-button:active {
     background-color: #1779BA;
-    color: #FFF;
-    filter: brightness(0.8);
+    color: #ffffff;
+    filter: brightness(1);
   }
   
   .candidate-button:hover {
     background-color: #C4E2F3;
+    box-shadow: 0 0 5px #3498db
   }
   .candidate-button.clicked {
-    background-color: #3f903fdf;
-    color: #fff000;
+    background-color: #1779BA;
+    color: #ffffff;
   }
 
 
@@ -104,7 +107,7 @@ h1 {
   padding: 20px;
   max-width: 500px;
   margin: 0 auto;
-  background-color: #FFF;
+  background-color: #fff;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -127,7 +130,7 @@ h1 {
   text-decoration: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  border-radius: 4px;
+  border-radius: 5px 20px;
 }
 
 .submit-button:hover {
@@ -136,13 +139,11 @@ h1 {
 
 .submit-button:focus {
   outline: none;
-  box-shadow: 0 0 5px #3498db;
 }
 
 .submit-button:active {
   outline: none;
   background-color: #21618c;
-  box-shadow: 0 0 5px #3498db;
 }
 
 
@@ -176,21 +177,23 @@ h1 {
 }
 
 .toggle-button {
-  background-color: #3498db;
-  color: #fff;
+  background-color: #f2f2f2;
+  color: #3498db;
   padding: 10px 20px;
   font-size: 16px;
+  border-radius: 30px;
   border: none;
   cursor: pointer;
 }
 
 .toggle-button:hover {
-  background-color: #2980b9;
+  background-color: #F2F2F2;
+  box-shadow: 0 0 5px #3498db
 }
 
 .toggle-button:focus {
   outline: none;
-  box-shadow: 0 0 5px #3498db;
+  ;
 }
 
 #hidden-text {
