@@ -13,13 +13,109 @@
         }
 
         .candidate-button.active {
-            background-color: #1779BA;
+            background-color: blue;
             color: white;
         }
     </style>
     <link rel="stylesheet" href="../style.css">
-</head>
-<body>
+    <script>
+        var candidates = [
+            [1, 2, 3, 4]
+            // Add more candidate lists here if needed
+        ];
+
+        var votes = [];
+        var voted = [];
+        var cookieName = 'ElectionVotes';
+
+        function createVoteList() {
+            for (var i = 0; i < candidates.length; i++) {
+                votes[i] = [];
+                for (var j = 0; j < candidates[i].length; j++) {
+                    votes[i][j] = 0;
+                }
+                voted[i] = false;
+            }
+        }
+
+        function saveVotes() {
+            var data = {
+                votes: votes,
+                voted: voted
+            };
+            var dataJson = JSON.stringify(data);
+            setCookie(cookieName, dataJson, 30);
+            console.log('Votes saved successfully!');
+        }
+
+        function loadVotes() {
+            var dataJson = getCookie(cookieName);
+            if (dataJson) {
+                var data = JSON.parse(dataJson);
+                votes = data.votes || [];
+                voted = data.voted || [];
+            }
+        }
+
+        function setCookie(name, value, days) {
+            var expires = '';
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+                expires = '; expires=' + date.toUTCString();
+            }
+            document.cookie = name + '=' + encodeURIComponent(value) + expires + '; path=/';
+        }
+
+        function getCookie(name) {
+            var cookieName = name + '=';
+            var cookieArray = document.cookie.split(';');
+            for (var i = 0; i < cookieArray.length; i++) {
+                var cookie = cookieArray[i].trim();
+                if (cookie.indexOf(cookieName) === 0) {
+                    return decodeURIComponent(cookie.substring(cookieName.length));
+                }
+            }
+            return null;
+        }
+
+        function vote(index, candidateIndex) {
+            if (!voted[index]) {
+                if (candidateIndex >= 0 && candidateIndex < candidates[index].length) {
+                    votes[index][candidateIndex]++;
+                    voted[index] = true;
+                    saveVotes();
+                    console.log('Vote submitted successfully!');
+                } else {
+                    console.log('Invalid candidate selection!');
+                }
+            } else {
+                console.log('You have already voted!');
+            }
+        }
+
+        function resetVotes() {
+            createVoteList();
+            saveVotes();
+            console.log('Votes reset successfully!');
+        }
+
+        function updateVoteCounts() {
+            // Update the vote count elements in the HTML
+            for (var i = 0; i < candidates.length; i++) {
+                for (var j = 0; j < candidates[i].length; j++) {
+                    var candidateKey = 'candidate' + (i + 1) + '-votes';
+                    var voteCountElement = document.getElementById(candidateKey);
+                    if (voteCountElement) {
+                        voteCountElement.innerText = votes[i][j];
+                    }
+                }
+            }
+        }
+
+        // Load the votes from cookies when the page loads
+        loadVotes();
+    </script>
     <script src="../app.js"></script>
 
     <h1>Vote Count</h1>
@@ -122,39 +218,39 @@
             }
 
         </script>
-        </head>
-        <body>
-            <div class="container">
-                <div id="candidate-section-Head-Boy" class="candidate-section">
-                    <h2>Head BOY Candidates</h2>
-                    <button class="candidate-button" id="c1" onclick="vote(1)">Candidate 1</button>
-                    <button class="candidate-button" id="c2" onclick="vote(2)">Candidate 2</button>
-                    <button class="candidate-button" id="c3" onclick="vote(3)">Candidate 3</button>
-                    <button class="candidate-button" id="c4" onclick="vote(4)">Candidate 4</button>
-                    <button class="submit-button" onclick="updateVoteCounts()">Submit Vote</button>
-                    <p id="success-message" class="success-message"></p>
-                    <p id="error-message" class="error-message"></p>
-                </div>
+</head>
+<body>
+    <div class="container">
+        <div id="candidate-section-Head-Boy" class="candidate-section">
+            <h2>Head BOY Candidates</h2>
+            <button class="candidate-button" id="c1" onclick="vote(1)">Candidate 1</button>
+            <button class="candidate-button" id="c2" onclick="vote(2)">Candidate 2</button>
+            <button class="candidate-button" id="c3" onclick="vote(3)">Candidate 3</button>
+            <button class="candidate-button" id="c4" onclick="vote(4)">Candidate 4</button>
+            <button class="submit-button" onclick="updateVoteCounts()">Submit Vote</button>
+            <p id="success-message" class="success-message"></p>
+            <p id="error-message" class="error-message"></p>
+        </div>
 
-                <input type="radio" name="candidate" value="candidate1" id="candidate1" style="display: none;">
-                <input type="radio" name="candidate" value="candidate2" id="candidate2" style="display: none;">
-                <input type="radio" name="candidate" value="candidate3" id="candidate3" style="display: none;">
-                <input type="radio" name="candidate" value="candidate4" id="candidate4" style="display: none;">
-            </div>
-            <button class="toggle-button" onclick="toggleText()">Show Votes</button>
-            <div id="hidden-text" style="display: none;">
-                <div>
-                    <h2>Current Vote Count:</h2>
-                    <p>Candidate 1: <span id="candidate1-votes">0</span> votes</p>
-                    <p>Candidate 2: <span id="candidate2-votes">0</span> votes</p>
-                    <p>Candidate 3: <span id="candidate3-votes">0</span> votes</p>
-                    <p>Candidate 4: <span id="candidate4-votes">0</span> votes</p>
-                    <hr>
-                    <p>Debug Tools</p>
-                    <button class="toggle-button" onclick="resetVotes()">Reset Votes</button>
-                   <button class="toggle-button" onclick="resetVotes()">Reset Votes</button>
-                    <button class="toggle-button" onclick="toggleText()">Close</button>
-                </div>
-            </div>
-        </body>
+        <input type="radio" name="candidate" value="candidate1" id="candidate1" style="display: none;">
+        <input type="radio" name="candidate" value="candidate2" id="candidate2" style="display: none;">
+        <input type="radio" name="candidate" value="candidate3" id="candidate3" style="display: none;">
+        <input type="radio" name="candidate" value="candidate4" id="candidate4" style="display: none;">
+    </div>
+    <button class="toggle-button" onclick="toggleText()">Show Votes</button>
+    <div id="hidden-text" style="display: none;">
+        <div>
+            <h2>Current Vote Count:</h2>
+            <p>Candidate 1: <span id="candidate1-votes">0</span> votes</p>
+            <p>Candidate 2: <span id="candidate2-votes">0</span> votes</p>
+            <p>Candidate 3: <span id="candidate3-votes">0</span> votes</p>
+            <p>Candidate 4: <span id="candidate4-votes">0</span> votes</p>
+            <hr>
+            <p>Debug Tools</p>
+            <button class="toggle-button" onclick="resetVotes()">Reset Votes</button>
+            <button class="toggle-button" onclick="resetVotes()">Reset Votes</button>
+            <button class="toggle-button" onclick="toggleText()">Close</button>
+        </div>
+    </div>
+</body>
 </html>
