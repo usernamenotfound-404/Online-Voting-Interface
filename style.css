@@ -187,11 +187,12 @@ h1 {
 
 .toggle-button:hover {
   background-color: #F2F2F2;
+  box-shadow: 0 0 5px #3498db
 }
 
 .toggle-button:focus {
   outline: none;
-  box-shadow: 0 0 5px #3498db;
+  ;
 }
 
 #hidden-text {
