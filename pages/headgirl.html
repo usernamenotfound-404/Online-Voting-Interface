@@ -6,21 +6,20 @@
         body {
             font-family: Arial, sans-serif;
         }
+
         .vote-count {
             font-weight: bold;
             margin-top: 20px;
         }
+
         .candidate-button.active {
             background-color: #1779BA;
             color: white;
         }
-        
     </style>
     <link rel="stylesheet" href="../CSS/headgirl style.css">
 </head>
 <body>
-    <script src="../app.js"></script>
-
     <h1>Vote Count</h1>
 
     <div class="tab-buttons">
@@ -39,54 +38,33 @@
     </div>
     <a href="../index.html"><button class="toggle-button">Home</button></a>
 
-        <div class="windows11-border">
-            <h1>Vote for Your Favorite Candidates</h1>
+    <div class="windows11-border">
+        <h1>Vote for Your Favorite Candidates</h1>
 
-            <script>
-                
-                document.addEventListener('DOMContentLoaded', () => {
-
-                    document.getElementById('c1').addEventListener('click', () => {
-                        document.getElementById('candidate1').checked = true;
-                        console.log(document.getElementById('candidate1').checked);
-                    });
-
-                    document.getElementById('c2').addEventListener('click', () => {
-                        document.getElementById('candidate2').checked = true;
-                    });
-
-                    document.getElementById('c3').addEventListener('click', () => {
-                        document.getElementById('candidate3').checked = true;
-                    });
-                    
-                    document.getElementById('c4').addEventListener('click', () => {
-                        document.getElementById('candidate4').checked = true;
-                    });
-                })
-            </script>
-
-            <div id="candidate-section-Head-Boy" class="candidate-section">
-                <h2>Head girl Candidates</h2>
-                <button class="candidate-button" id="c1">Candidate 1</button>
-                <button class="candidate-button" id="c2">Candidate 2</button>
-                <button class="candidate-button" id="c3">Candidate 3</button>
-                <button class="candidate-button" id="c4">Candidate 4</button>
-                <button class="submit-button" onclick="vote(1)">Submit Vote</button>
-                <p id="success-message" class="success-message"></p>
-                <p id="error-message" class="error-message"></p>
-            </div>
-
-            <input type="radio" name="candidate" value="candidate1" id="candidate1" style="display: none;">
-            <input type="radio" name="candidate" value="candidate1" id="candidate2" style="display: none;">
-            <input type="radio" name="candidate" value="candidate1" id="candidate3" style="display: none;">
-            <input type="radio" name="candidate" value="candidate1" id="candidate4" style="display: none;">
-            
+        <div id="candidate-section-Head-Boy" class="candidate-section">
+            <h2>Head girl Candidates</h2>
+            <button class="candidate-button" id="c1" onclick="selectCandidate(1)">Candidate 1</button>
+            <button class="candidate-button" id="c2" onclick="selectCandidate(2)">Candidate 2</button>
+            <button class="candidate-button" id="c3" onclick="selectCandidate(3)">Candidate 3</button>
+            <button class="candidate-button" id="c4" onclick="selectCandidate(4)">Candidate 4</button>
+            <button class="submit-button" onclick="vote()">Submit Vote</button>
+            <p id="success-message" class="success-message"></p>
+            <p id="error-message" class="error-message"></p>
         </div>
-        <hr>
-        <p>Debug Tools</p>
-        <button class="toggle-button" onclick="resetVotes()">Reset Votes</button>
-        <button class="toggle-button" onclick="resetVoted()">Reset Voted</button>
-        <button class="toggle-button" onclick="toggleText()">Show Votes</button>
+
+        <input type="radio" name="candidate" value="candidate1" id="candidate1" style="display: none;">
+        <input type="radio" name="candidate" value="candidate1" id="candidate2" style="display: none;">
+        <input type="radio" name="candidate" value="candidate1" id="candidate3" style="display: none;">
+        <input type="radio" name="candidate" value="candidate1" id="candidate4" style="display: none;">
+    </div>
+
+    <hr>
+
+    <p>Debug Tools</p>
+    <button class="toggle-button" onclick="resetVotes()">Reset Votes</button>
+    <button class="toggle-button" onclick="resetVoted()">Reset Voted</button>
+    <button class="toggle-button" onclick="toggleText()">Show Votes</button>
+
     <div id="hidden-text" style="display: none;">
         <div>
             <h2>Current Vote Count:</h2>
@@ -96,5 +74,73 @@
             <p>Candidate 4: <span id="candidate4-votes">0</span> votes</p>
         </div>
     </div>
+
+    <script>
+        function selectCandidate(candidateNumber) {
+            const candidateInputs = document.getElementsByName('candidate');
+            for (const input of candidateInputs) {
+                input.checked = false;
+            }
+            document.getElementById('candidate' + candidateNumber).checked = true;
+        }
+
+        function vote() {
+            const candidateInputs = document.getElementsByName('candidate');
+            let selectedCandidate = null;
+
+            for (const input of candidateInputs) {
+                if (input.checked) {
+                    selectedCandidate = input;
+                    break;
+                }
+            }
+
+            if (selectedCandidate !== null) {
+                const candidateId = selectedCandidate.id;
+                const votesElement = document.getElementById(candidateId + '-votes');
+                const currentVotes = parseInt(votesElement.innerText);
+                votesElement.innerText = currentVotes + 1;
+                resetSelection();
+                displaySuccessMessage('Vote submitted successfully!');
+            } else {
+                displayErrorMessage('Please select a candidate to vote.');
+            }
+        }
+
+        function resetSelection() {
+            const candidateInputs = document.getElementsByName('candidate');
+            for (const input of candidateInputs) {
+                input.checked = false;
+            }
+        }
+
+        function displaySuccessMessage(message) {
+            const successMessage = document.getElementById('success-message');
+            successMessage.innerText = message;
+        }
+
+        function displayErrorMessage(message) {
+            const errorMessage = document.getElementById('error-message');
+            errorMessage.innerText = message;
+        }
+
+        function resetVotes() {
+            const votesElements = document.querySelectorAll('.candidate-section p span');
+            for (const element of votesElements) {
+                element.innerText = '0';
+            }
+            displaySuccessMessage('Votes reset successfully!');
+        }
+
+        function resetVoted() {
+            resetSelection();
+            displaySuccessMessage('Voted selection reset successfully!');
+        }
+
+        function toggleText() {
+            const hiddenText = document.getElementById('hidden-text');
+            hiddenText.style.display = hiddenText.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
 </body>
 </html>
