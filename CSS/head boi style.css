@@ -1,1 +1,211 @@
+.button {
+  display: inline-block;
 
+  padding: 15px 24px;
+  margin-left: 7px;
+  margin-right: 7px;
+  margin-top: 7px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  border: none;
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+body {
+  background-color: #F2F2F2;
+  text-align: center;
+  font-family: Segoe UI, sans-serif;
+}
+
+h1 {
+  font-size: 32px;
+  margin: 20px 0;
+  color: #1779BA;
+}
+
+.tab-button {
+  display: inline-block;
+  width: 120px;
+  height: 40px;
+  background-color: #ffffff;
+  color: #000;
+  font-size: 16px;
+  margin: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+  .tab-button.active {
+      background-color: #1779BA;
+      color: #FFF;
+  }
+
+  .tab-button:hover {
+      background-color: #C4E2F3;
+  }
+
+  .candidate-button {
+    display: inline-block;
+    width: 180px;
+    height: 60px;
+    background-color: #ffffff;
+    color: #000;
+    font-size: 18px;
+    margin: 10px;
+    border: none;
+    border-radius: 23px;
+    cursor: pointer;
+    transition: background-color 0.3s, filter 0.3s;
+    box-shadow: 0 0 5px #3498db
+
+  }
+  
+  .candidate-button:active {
+    background-color: #1779BA;
+    color: #ffffff;
+    filter: brightness(1);
+  }
+  
+  .candidate-button:hover {
+    background-color: #C4E2F3;
+    box-shadow: 0 0 5px #3498db
+  }
+  .candidate-button.clicked {
+    background-color: #1779BA;
+    color: #ffffff;
+  }
+
+
+.success-message {
+  font-size: 18px;
+  color: #1779BA;
+  margin-top: 10px;
+}
+
+.error-message {
+  font-size: 18px;
+  color: #FF0000;
+  margin-top: 10px;
+}
+
+.vote-count {
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.windows11-border {
+  border: 1px solid #C4C4C4;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+.button:active {
+  background-color: #3e8e41;
+}
+
+.submit-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background-color: #3498db;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 15px;
+}
+
+.submit-button:hover {
+  background-color: #2980b9;
+}
+
+.submit-button:focus {
+  outline: none;
+}
+
+.submit-button:active {
+  outline: none;
+  background-color: #21618c;
+}
+
+
+/*.centered-div {
+  position: absolute;
+  top:25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}*/
+
+.centered-div {
+  margin: 0 auto;
+  width: 69%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.vote-count{
+  margin: 0 auto;
+  width: 69%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-button {
+  background-color: #f2f2f2;
+  color: #3498db;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+.toggle-button:hover {
+  background-color: #F2F2F2;
+  box-shadow: 0 0 5px #3498db
+}
+
+.toggle-button:focus {
+  outline: none;
+  ;
+}
+
+#hidden-text {
+  margin-top: 10px;
+  padding: 10px;
+  margin: 0 auto;
+  width: 69%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #f1f1f1;
+}
