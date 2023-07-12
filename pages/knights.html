@@ -2,23 +2,16 @@
 <html>
 <head>
     <title>E-Voting System</title>
-    <link rel="shortcut icon" type="image/png" href="favicon.png">
     <style>
         body {
             font-family: Arial, sans-serif;
         }
-
         .vote-count {
             font-weight: bold;
             margin-top: 20px;
         }
-        
-        .candidate-button.active {
-            background-color: #1779BA;
-            color: white;
-        }
     </style>
-    <link rel="stylesheet" href="../CSS/knights style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <script src="../app.js"></script>
@@ -109,7 +102,7 @@
             </script>
 
             <div id="candidate-section-Head-Boy" class="candidate-section">
-                <h2>Knights house Captain Candidates (Boys)</h2>
+                <h2 class="bh2">Knights house Captain Candidates (Boys)</h2>
                 <button class="candidate-button" id="c1">Candidate 1</button>
                 <button class="candidate-button" id="c2">Candidate 2</button>
                 <button class="candidate-button" id="c3">Candidate 3</button>
@@ -119,18 +112,18 @@
                 <p id="error-message" class="error-message"></p>
             </div>
 
-            <input type="radio" name="candidate" value="candidate1" id="candidate1" style="display: none;">
-            <input type="radio" name="candidate" value="candidate1" id="candidate2" style="display: none;">
-            <input type="radio" name="candidate" value="candidate1" id="candidate3" style="display: none;">
-            <input type="radio" name="candidate" value="candidate1" id="candidate4" style="display: none;">
+            <input type="radio" name="boys" value="candidate1" id="candidate1" style="display: none;">
+            <input type="radio" name="boys" value="candidate1" id="candidate2" style="display: none;">
+            <input type="radio" name="boys" value="candidate1" id="candidate3" style="display: none;">
+            <input type="radio" name="boys" value="candidate1" id="candidate4" style="display: none;">
 
             <div id="candidate-section-Head-Boy" class="candidate-section">
-                <h2>Knights house Captain Candidates (Girls)</h2>
-                <button class="candidate-button" id="c5">Candidate 1</button>
-                <button class="candidate-button" id="c6">Candidate 2</button>
-                <button class="candidate-button" id="c7">Candidate 3</button>
-                <button class="candidate-button" id="c8">Candidate 4</button>
-                <button class="submit-button" onclick="vote(7)">Submit Vote</button>
+                <h2 class="gh2">Knights house Captain Candidates (Girls)</h2>
+                <button class="g-candidate-button" id="c5">Candidate 1</button>
+                <button class="g-candidate-button" id="c6">Candidate 2</button>
+                <button class="g-candidate-button" id="c7">Candidate 3</button>
+                <button class="g-candidate-button" id="c8">Candidate 4</button>
+                <button class="g-submit-button" onclick="vote(7)">Submit Vote</button>
                 <p id="success-message" class="success-message"></p>
                 <p id="error-message" class="error-message"></p>
             </div>

@@ -2,39 +2,21 @@
 <html>
 <head>
     <title>E-Voting System</title>
-    <link rel="shortcut icon" type="image/png" href="favicon.png">
     <style>
         body {
             font-family: Arial, sans-serif;
         }
-
         .vote-count {
             font-weight: bold;
             margin-top: 20px;
         }
-
-        .candidate-button.active {
-            background-color: #1779BA;
-            color: white;
-        }
     </style>
-    <link rel="stylesheet" href="../CSS/head boi style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    </script>
     <script src="../app.js"></script>
 
     <h1>Vote Count</h1>
-
-    <div class="tab-buttons">
-        <!-- Tab buttons for different categories -->
-        <!-- ... Your tab buttons here ... -->
-    </div>
-
-    <div class="candidate-sections">
-        <!-- Candidate sections for different categories -->
-        <!-- ... Your candidate sections here ... -->
-    </div>
 
     <div class="messages">
         <p id="success-message"></p>
@@ -43,120 +25,62 @@
 
     <a href="../index.html"><button class="toggle-button">Home</button></a>
 
-    <div class="windows11-border">
-        <h1>Vote for Your Favorite Candidates</h1>
+        <div class="windows11-border">
+            <h1 class="bh1">Vote for Your Favorite Candidates</h1>
 
-        <script>
-            // Select the candidate button and update the UI
-            function selectCandidate(candidateButton) {
-                var activeButton = document.querySelector('.candidate-button.active');
-                if (activeButton) {
-                    activeButton.classList.remove('active');
-                }
-                candidateButton.classList.add('active');
-            }
+            <script>
+                
+                document.addEventListener('DOMContentLoaded', () => {
 
-            document.addEventListener('DOMContentLoaded', () => {
-                document.getElementById('c1').addEventListener('click', () => {
-                    document.getElementById('candidate1').checked = true;
-                    selectCandidate(document.getElementById('c1'));
-                });
+                    document.getElementById('c1').addEventListener('click', () => {
+                        document.getElementById('candidate1').checked = true;
+                        console.log(document.getElementById('candidate1').checked);
+                    });
 
-                document.getElementById('c2').addEventListener('click', () => {
-                    document.getElementById('candidate2').checked = true;
-                    selectCandidate(document.getElementById('c2'));
-                });
+                    document.getElementById('c2').addEventListener('click', () => {
+                        document.getElementById('candidate2').checked = true;
+                    });
 
-                document.getElementById('c3').addEventListener('click', () => {
-                    document.getElementById('candidate3').checked = true;
-                    selectCandidate(document.getElementById('c3'));
-                });
+                    document.getElementById('c3').addEventListener('click', () => {
+                        document.getElementById('candidate3').checked = true;
+                    });
+                    
+                    document.getElementById('c4').addEventListener('click', () => {
+                        document.getElementById('candidate4').checked = true;
+                    });
+                })
+            </script>
 
-                document.getElementById('c4').addEventListener('click', () => {
-                    document.getElementById('candidate4').checked = true;
-                    selectCandidate(document.getElementById('c4'));
-                });
-            });
-
-            var candidateVotes = {
-                "Candidate 1": 0,
-                "Candidate 2": 0,
-                "Candidate 3": 0,
-                "Candidate 4": 0
-            };
-            var selectedCandidate = null;
-
-            function vote(candidate) {
-                if (selectedCandidate === null) {
-                    if (candidate >= 1 && candidate <= 4) {
-                        selectedCandidate = candidate;
-                        document.getElementById('success-message').innerText = 'Vote submitted successfully!';
-                        document.getElementById('error-message').innerText = '';
-                    } else {
-                        document.getElementById('error-message').innerText = 'Invalid candidate selection!';
-                        document.getElementById('success-message').innerText = '';
-                    }
-                } else {
-                    document.getElementById('error-message').innerText = 'You have already voted!';
-                    document.getElementById('success-message').innerText = '';
-                }
-            }
-
-            function updateVoteCounts() {
-                if (selectedCandidate !== null) {
-                    var candidateKey = 'Candidate ' + selectedCandidate;
-                    candidateVotes[candidateKey]++;
-                    document.getElementById('candidate1-votes').innerText = candidateVotes['Candidate 1'];
-                    document.getElementById('candidate2-votes').innerText = candidateVotes['Candidate 2'];
-                    document.getElementById('candidate3-votes').innerText = candidateVotes['Candidate 3'];
-                    document.getElementById('candidate4-votes').innerText = candidateVotes['Candidate 4'];
-                    selectedCandidate = null;
-                    document.getElementById('success-message').innerText = 'Vote submitted successfully!';
-                    setTimeout(function () {
-                        document.getElementById('success-message').innerText = '';
-                    }, 2000);
-                }
-            }
-
-            function toggleText() {
-                var hiddenText = document.getElementById('hidden-text');
-                hiddenText.style.display = (hiddenText.style.display === 'none') ? 'block' : 'none';
-            }
-
-        </script>
-        </head>
-        <body>
-            <div class="container">
-                <div id="candidate-section-Head-Boy" class="candidate-section">
-                    <h2>Head BOY Candidates</h2>
-                    <button class="candidate-button" id="c1" onclick="vote(1)">Candidate 1</button>
-                    <button class="candidate-button" id="c2" onclick="vote(2)">Candidate 2</button>
-                    <button class="candidate-button" id="c3" onclick="vote(3)">Candidate 3</button>
-                    <button class="candidate-button" id="c4" onclick="vote(4)">Candidate 4</button>
-                    <button class="submit-button" onclick="updateVoteCounts()">Submit Vote</button>
-                    <p id="success-message" class="success-message"></p>
-                    <p id="error-message" class="error-message"></p>
-                </div>
-
-                <input type="radio" name="candidate" value="candidate1" id="candidate1" style="display: none;">
-                <input type="radio" name="candidate" value="candidate2" id="candidate2" style="display: none;">
-                <input type="radio" name="candidate" value="candidate3" id="candidate3" style="display: none;">
-                <input type="radio" name="candidate" value="candidate4" id="candidate4" style="display: none;">
+            <div id="candidate-section-Head-Boy" class="candidate-section">
+                <h2>Head Boy Candidates</h2>
+                <button class="candidate-button" id="c1">Candidate 1</button>
+                <button class="candidate-button" id="c2">Candidate 2</button>
+                <button class="candidate-button" id="c3">Candidate 3</button>
+                <button class="candidate-button" id="c4">Candidate 4</button>
+                <button class="submit-button" onclick="vote(0)">Submit Vote</button>
+                <p id="success-message" class="success-message"></p>
+                <p id="error-message" class="error-message"></p>
             </div>
-            <button class="toggle-button" onclick="toggleText()">Show Votes</button>
-            <div id="hidden-text" style="display: none;">
-                <div>
-                    <h2>Current Vote Count:</h2>
-                    <p>Candidate 1: <span id="candidate1-votes">0</span> votes</p>
-                    <p>Candidate 2: <span id="candidate2-votes">0</span> votes</p>
-                    <p>Candidate 3: <span id="candidate3-votes">0</span> votes</p>
-                    <p>Candidate 4: <span id="candidate4-votes">0</span> votes</p>
-                    <hr>
-                    <p>Debug Tools</p>
-                    <button class="toggle-button" onclick="resetVotes()">Reset Votes</button>
-                    <button class="toggle-button" onclick="resetVotes()">Reset Votes</button>
-                    <button class="toggle-button" onclick="toggleText()">Close</button>
-                </div>
-            </div>
+
+            <input type="radio" name="candidate" value="candidate1" id="candidate1" style="display: none;">
+            <input type="radio" name="candidate" value="candidate1" id="candidate2" style="display: none;">
+            <input type="radio" name="candidate" value="candidate1" id="candidate3" style="display: none;">
+            <input type="radio" name="candidate" value="candidate1" id="candidate4" style="display: none;">
+            
+        </div>
+        <hr>
+        <p>Debug Tools</p>
+        <button class="toggle-button" onclick="resetVotes()">Reset Votes</button>
+        <button class="toggle-button" onclick="resetVoted()">Reset Voted</button>
+        <button class="toggle-button" onclick="toggleText()">Show Votes</button>
+    <div id="hidden-text" style="display: none;">
+        <div>
+            <h2>Current Vote Count:</h2>
+            <p>Candidate 1: <span id="candidate1-votes">0</span> votes</p>
+            <p>Candidate 2: <span id="candidate2-votes">0</span> votes</p>
+            <p>Candidate 3: <span id="candidate3-votes">0</span> votes</p>
+            <p>Candidate 4: <span id="candidate4-votes">0</span> votes</p>
+        </div>
+    </div>
 </body>
 </html>
