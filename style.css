@@ -1,7 +1,6 @@
 .button {
   display: inline-block;
 
-  padding: 15px 24px;
   margin-left: 7px;
   margin-right: 7px;
   margin-top: 7px;
@@ -10,15 +9,17 @@
   text-align: center;
   text-decoration: none;
   border-radius: 4px;
-  border: none;
-  background-color: #4CAF50;
-  color: #fff;
-  cursor: pointer;
   transition: background-color 0.3s ease;
+  background-color: #FF9D00;
+  color: #FFF8DC;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
 }
 
 body {
-  background-color: #F2F2F2;
+  background-color: #212121;
+  color: #FFF8DC;
   text-align: center;
   font-family: Segoe UI, sans-serif;
 }
@@ -26,7 +27,7 @@ body {
 h1 {
   font-size: 32px;
   margin: 20px 0;
-  color: #100001;
+  color: #00FFFF;
 }
 
 .bh1 {
@@ -57,24 +58,68 @@ h1 {
   display: inline-block;
   width: 120px;
   height: 40px;
-  background-color: #ffffff;
-  color: #000;
+  background-color: #212121;
+  color: #FFF8DC;
   font-size: 16px;
   margin: 10px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, filter 0.3s, transform 0.3s;
+  animation: button-color-change 0.3s ease-in-out, button-glow 0.5s ease-in-out, button-shape-change 0.7s ease-in-out;
+  /*Neon glow*/
+  filter: drop-shadow(0 0 7px #FFD700);
 }
 
-  .tab-button.active {
-      background-color: #1779BA;
-      color: #FFF;
-  }
+.tab-button.active {
+  background-color: #FF9D00;
+  color: #FFF8DC;
+  filter: drop-shadow(0 0 7px #FFD700);
+}
 
-  .tab-button:hover {
-      background-color: #C4E2F3;
+.tab-button:hover {
+  background-color: #FF6F00;
+  color: #FFF8DC;
+  filter: drop-shadow(0 0 7px #FFD700);
+}
+
+@keyframes button-color-change {
+  0% {
+    background-color: #212121;
   }
+  50% {
+    background-color: #FF9D00;
+  }
+  100% {
+    background-color: #FF6F00;
+  }
+}
+
+@keyframes button-glow {
+  0% {
+    filter: drop-shadow(0 0 7px #FFD700);
+  }
+  50% {
+    filter: drop-shadow(0 0 10px #FFD700);
+  }
+  100% {
+    filter: drop-shadow(0 0 7px #FFD700);
+  }
+}
+
+@keyframes button-shape-change {
+  0% {
+    transform: none;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+
 
   .g-tab-button {
     display: inline-block;
@@ -99,67 +144,79 @@ h1 {
         background-color: #FEBFD2;
     }
 
-  .candidate-button {
-    display: inline-block;
-    width: 180px;
-    height: 60px;
-    background-color: #ffffff;
-    color: #000;
-    font-size: 18px;
-    margin: 10px;
-    border: none;
-    border-radius: 23px;
-    cursor: pointer;
-    transition: background-color 0.3s, filter 0.3s;
-    box-shadow: 0 0 5px #3498db
+    .candidate-button {
+      display: inline-block;
+      width: 180px;
+      height: 60px;
+      background-color: #212121;
+      color: #FFF8DC;
+      font-size: 18px;
+      margin: 10px;
+      border: none;
+      border-radius: 23px;
+      cursor: pointer;
+      transition: background-color 0.3s, filter 0.3s;
+      box-shadow: 0 0 5px #FEA6C0;
+      /*Neon glow*/
+      filter: drop-shadow(0 0 7px #00AEFF);
+    }
+    
+    .candidate-button:active {
+      background-color: #1779BA;
+      color: #ffffff;
+      filter: brightness(1);
+    }
+    
+    .candidate-button:hover {
+      background-color: #C4E2F3;
+      box-shadow: 0 0 5px #FEA6C0;
+      /*Neon glow*/
+      filter: drop-shadow(0 0 7px #00AEFF);
+    }
+    
+    .candidate-button.clicked {
+      background-color: #1779BA;
+      color: #ffffff;
+    }
+    
+    
 
-  }
-  
-  .candidate-button:active {
-    background-color: #1779BA;
-    color: #ffffff;
-    filter: brightness(1);
-  }
-  
-  .candidate-button:hover {
-    background-color: #C4E2F3;
-    box-shadow: 0 0 5px #3498db
-  }
-  .candidate-button.clicked {
-    background-color: #1779BA;
-    color: #ffffff;
-  }
+    .g-candidate-button {
+      display: inline-block;
+      width: 180px;
+      height: 60px;
+      background-color: #212121;
+      color: #FFF8DC;
+      font-size: 18px;
+      margin: 10px;
+      border: none;
+      border-radius: 23px;
+      cursor: pointer;
+      transition: background-color 0.3s, filter 0.3s;
+      box-shadow: 0 0 5px #FEA6C0;
+      /*Neon glow*/
+      filter: drop-shadow(0 0 7px #FF77FF);
+    }
+    
+    .g-candidate-button:active {
+      background-color: #FEA6C0;
+      color: #ffffff;
+      filter: brightness(1);
+    }
+    
+    .g-candidate-button:hover {
+      background-color: #F535AA;
+      box-shadow: 0 0 5px #FEA6C0;
+      /*Neon glow*/
+      filter: drop-shadow(0 0 7px #F535AA);
+    }
+    
+    .g-candidate-button.clicked {
+      background-color: #1779BA;
+      color: #ffffff;
+    }
 
-  .g-candidate-button {
-    display: inline-block;
-    width: 180px;
-    height: 60px;
-    background-color: #ffffff;
-    color: #000;
-    font-size: 18px;
-    margin: 10px;
-    border: none;
-    border-radius: 23px;
-    cursor: pointer;
-    transition: background-color 0.3s, filter 0.3s;
-    box-shadow: 0 0 5px #FEA6C0
-
-  }
-  
-  .g-candidate-button:active {
-    background-color: #FC6C85;
-    color: #ffffff;
-    filter: brightness(1);
-  }
-  
-  .g-candidate-button:hover {
-    background-color: #FEBFD2;
-    box-shadow: 0 0 5px #FEA6C0
-  }
-  .g-candidate-button.clicked {
-    background-color: #FC6C85;
-    color: #ffffff;
-  }
+    
 
 
 .success-message {
@@ -180,14 +237,19 @@ h1 {
 }
 
 .windows11-border {
-  border: 1px solid #C4C4C4;
+  border: 1px solid #171717;
   border-radius: 8px;
   padding: 20px;
   max-width: 500px;
   margin: 0 auto;
-  background-color: #fff;
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+  background-color: #131313;
+  box-shadow: 0 0 5px #FEA6C0;
+  /*Neon glow*/
+  filter: drop-shadow(0 0 7px #FFD700);
 }
+
+
+
 
 .windows11-border-k {
   border: 1px solid #C4C4C4;
@@ -249,10 +311,18 @@ h1 {
   cursor: pointer;
   transition: background-color 0.3s ease;
   border-radius: 15px;
+  /*Neon glow*/
+  filter: drop-shadow(0 0 7px #00BFFF);
+  /*Blue border*/
+  border: 1px solid #00BFFF;
 }
 
 .submit-button:hover {
   background-color: #2980b9;
+  /*Neon glow*/
+  filter: drop-shadow(0 0 7px #00BFFF);
+  /*Blue border*/
+  border: 1px solid #00BFFF;
 }
 
 .submit-button:focus {
@@ -262,24 +332,45 @@ h1 {
 .submit-button:active {
   outline: none;
   background-color: #21618c;
+  /*Neon glow*/
+  filter: drop-shadow(0 0 7px #00BFFF);
+  /*Blue border*/
+  border: 1px solid #00BFFF;
 }
+
+/*Responsive*/
+@media (max-width: 500px) {
+  .submit-button {
+    padding: 5px 10px;
+  }
+}
+
+
 
 .g-submit-button {
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
   border: none;
-  background-color: #FC6C85;
+  background-color: #FF77FF;
   color: #fff;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
   border-radius: 15px;
+  /*Neon glow*/
+  filter: drop-shadow(0 0 7px #FF77FF);
+  /*Responsive*/
+  @media (max-width: 500px) {
+    padding: 5px 10px;
+  }
 }
 
 .g-submit-button:hover {
-  background-color: #FC427A;
+  background-color: #FF6F00;
+  /*Neon glow*/
+  filter: drop-shadow(0 0 7px #FF77FF);
 }
 
 .g-submit-button:focus {
@@ -288,8 +379,13 @@ h1 {
 
 .g-submit-button:active {
   outline: none;
-  background-color: #FEA6C0;
+  background-color: #FF5700;
+  /*Neon glow*/
+  filter: drop-shadow(0 0 7px #FF77FF);
 }
+
+
+
 
 
 /*.centered-div {
@@ -323,7 +419,7 @@ h1 {
 
 .toggle-button {
   background-color: #f2f2f2;
-  color: #3498db;
+  color: #FF9D00;
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 30px;
@@ -333,12 +429,11 @@ h1 {
 
 .toggle-button:hover {
   background-color: #F2F2F2;
-  box-shadow: 0 0 5px #3498db
+  box-shadow: 0 0 5px #FF9D00;
 }
 
 .toggle-button:focus {
   outline: none;
-  ;
 }
 
 #hidden-text {
@@ -352,5 +447,10 @@ h1 {
   justify-content: center;
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  background-color: #f1f1f1;
+  background-color: #212121;
+  /*Neon glow*/
+  filter: drop-shadow(0 0 10px #FF77FF);
+  /*Neon text*/
+  color: #FFF8DC;
+  text-shadow: 0 0 10px #FF77FF;
 }

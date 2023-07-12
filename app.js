@@ -93,22 +93,37 @@ function syncVotes(action){
 
 }
 
-function updateVoteCount(index,i){
-    var voteCountElement = document.getElementById(`candidate${i}-votes`);
-            if (voteCountElement!=null && voteCountElement!=undefined) {
-                if(i<=4){
+function updateVoteCount(index){
+    
+
+    for(var i=(candidates[index][0]);i<=(candidates[index][candidates[index].length-1]);i++){
+        console.log("Details - i=> ", " index=> ", index, i );
+        var voteCountElement = document.getElementById(`candidate${i}-votes`);
+
+        if (voteCountElement!=null && voteCountElement!=undefined) {
+                console.log(index);
+                if(index<=1){
                     voteCountElement.innerText = votes[index][i-1];
-                    if(index>=2){
-                        var voteCountElement = document.getElementById(`candidate${i+4}-votes`);
-                        voteCountElement.innerText = votes[index+1][i-1];
+                }
+                else if(index>=2){
+                    if(i<=4){
+                        voteCountElement.innerText = votes[index][i-1];
+                        if(index>=2){
+                            var voteCountElement = document.getElementById(`candidate${i+4}-votes`);
+                            if (voteCountElement!=null && voteCountElement!=undefined){
+                                voteCountElement.innerText = votes[index+1][i-1];
+                            }
+                        }
+                    }
+                    else if(i>=5){
+                        voteCountElement.innerText = votes[index][i-5];
+                        var voteCountElement = document.getElementById(`candidate${i-4}-votes`);
+                        voteCountElement.innerText = votes[index-1][i-5];
                     }
                 }
-                else if(i>=5){
-                    voteCountElement.innerText = votes[index][i-5];
-                    var voteCountElement = document.getElementById(`candidate${i-4}-votes`);
-                    voteCountElement.innerText = votes[index-1][i-5];
-                }
-            }
+        }
+    }
+            
 }
 
 function resetVotes(){
