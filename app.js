@@ -83,25 +83,30 @@ function syncVotes(action){
         var cd2=getCookieData("BakedWafers");
         votes=cd;
         voted=cd2;
-        console.log(votes);
+        
     }
     if(action=="up"){
         createPersistentCookie("CrispBiscuit", votes, 69);
         createPersistentCookie("BakedWafers", voted, 69);
-        console.log(document.cookie);
-        console.log(votes);
+        
     }
 
 }
 
 function updateVoteCount(index,i){
-    const voteCountElement = document.getElementById(`candidate${i}-votes`);
+    var voteCountElement = document.getElementById(`candidate${i}-votes`);
             if (voteCountElement!=null && voteCountElement!=undefined) {
                 if(i<=4){
                     voteCountElement.innerText = votes[index][i-1];
+                    if(index>=2){
+                        var voteCountElement = document.getElementById(`candidate${i+4}-votes`);
+                        voteCountElement.innerText = votes[index+1][i-1];
+                    }
                 }
                 else if(i>=5){
                     voteCountElement.innerText = votes[index][i-5];
+                    var voteCountElement = document.getElementById(`candidate${i-4}-votes`);
+                    voteCountElement.innerText = votes[index-1][i-5];
                 }
             }
 }
@@ -142,11 +147,10 @@ function vote(index){
     syncVotes("down");
     if(voted[index]==false){
         for(var i=(candidates[index][0]);i<=(candidates[index][candidates[index].length-1]);i++){
-            console.log("BP0");
+            //console.log("BP0");
             if((document.getElementById(`candidate${i}`).checked)==true){
                 if(i<=4){
                     votes[index][i-1]+=1;
-                    //alert(`Voted for Candidate ${i} successfully!`);
                 }
                 else if(i>=5){
                     votes[index][i-5]+=1;
@@ -160,7 +164,7 @@ function vote(index){
                 syncVotes("up");
             }
 
-            updateVoteCount(index,i);
+            //updateVoteCount(index,i);
 
         }
         
@@ -169,11 +173,12 @@ function vote(index){
         //alert("You've already voted!");
         document.getElementById('error-message').innerText = 'You have already voted!';
         document.getElementById('success-message').innerText = '';
-        for(var i=(candidates[index][0]);i<=(candidates[index][candidates[index].length-1]);i++){
-            updateVoteCount(index,i);
-        }
+        /*for(var i=(candidates[index][0]);i<=(candidates[index][candidates[index].length-1]);i++){
+            //updateVoteCount(index,i);
+        }*/
     }
     for(var i=(candidates[index][0]);i<=(candidates[index][candidates[index].length-1]);i++){
+            console.log("Details - i=> ", " index=> ", index, i );
             updateVoteCount(index,i);
     }
     console.log(votes)
