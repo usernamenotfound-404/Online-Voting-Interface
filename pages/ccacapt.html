@@ -1,15 +1,38 @@
+<!--
+Copyright [2023] [Anuj Doddakaragi, Tejas Muttayanmath, Akhilesh Wade]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>E-Voting System</title>
     <style>
-        body {
+ body {
             font-family: Arial, sans-serif;
         }
         .vote-count {
             font-weight: bold;
             margin-top: 20px;
         }
+        body {
+            background-image: url('img.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
     </style>
     <link rel="stylesheet" href="../style.css">
 </head>
@@ -82,10 +105,10 @@
 
             <div id="candidate-section-Head-Boy" class="candidate-section">
                 <h2 class="bh2">CCA Captain Candidates (Boys)</h2>
-                <button class="candidate-button" id="c1">Candidate 1</button>
-                <button class="candidate-button" id="c2">Candidate 2</button>
-                <button class="candidate-button" id="c3">Candidate 3</button>
-                <button class="candidate-button" id="c4">Candidate 4</button>
+                <button class="candidate-button" id="c1">Ankit Kumar JHA</button>
+                <button class="candidate-button" id="c2">Nishant</button>
+                <button class="candidate-button" id="c3">Dheeraj Singh</button>
+                <button class="candidate-button" id="c4">Prem Miskin</button>
                 <button class="submit-button" onclick="vote(4)">Submit Vote</button>
                 <p id="success-message" class="success-message"></p>
                 <p id="error-message" class="error-message"></p>
@@ -98,10 +121,10 @@
 
             <div id="candidate-section-Head-Boy" class="candidate-section">
                 <h2 class="gh2">CCA Captain Candidates (Girls)</h2>
-                <button class="g-candidate-button" id="c5">Candidate 1</button>
-                <button class="g-candidate-button" id="c6">Candidate 2</button>
+                <button class="g-candidate-button" id="c5">Srinithya Mokkapati</button>
+                <button class="g-candidate-button" id="c6">Olive Angel</button>
                 <button class="g-candidate-button" id="c7">Candidate 3</button>
-                <button class="g-candidate-button" id="c8">Candidate 4</button>
+                <button class="g-candidate-button" id="c8">Chinmayee Senapati</button>
                 <button class="g-submit-button" onclick="vote(5)">Submit Vote</button>
                 <p id="success-message" class="success-message"></p>
                 <p id="error-message" class="error-message"></p>
@@ -134,5 +157,6 @@
             <p>Candidate 4: <span id="candidate8-votes">0</span> votes</p>
         </div>
     </div>
+    <footer style="position:static;bottom:0px"><p>© Anuj Doddakaragi, Tejas M, Akhilesh Wade [2023]</p><p>Powered by ChatGPT and Bard</p></footer>
 </body>
 </html>
