@@ -20,15 +20,19 @@ Copyright [2023] [Anuj Doddakaragi, Tejas Muttayanmath, Akhilesh Wade]
 var candidates=[
     [1,2,3,4],
     [1,2,3,4],
-    [0,1,2,3,4],[5,6],
-    [1,2,3,4],[5,6,7,8],
-    [1,2,3],[5,6,7,8],
-    [1,2,3],[5,6,7,8],
-    [1,2,3,4],[5,6],
-    [1,2],[5,6],
+    [0,1,2,3,4],[1,2],
+    [1,2,3,4],[1,2,3,4],
+    [1,2,3],[1,2,3,4],
+    [1,2,3],[1,2,3,4],
+    [1,2,3,4],[1,2],
+    [1,2],[1,2],
 
 ];
 var votes=[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
+
+var startno=[
+    1,1,1,5,1,5,1,5,1,5,1,5,1,5
+];
 
 var voted=[];
 
@@ -42,22 +46,21 @@ function createVoteList(candidates,index,votes){
             voted[i]=false;
         }
     }
-votes[2]=[0,0,0,0,0]
 }
-createVoteList(candidates,0,votes);
-createVoteList(candidates,1,votes);
-createVoteList(candidates,2,votes);
-createVoteList(candidates,3,votes);
-createVoteList(candidates,4,votes);
-createVoteList(candidates,5,votes);
-createVoteList(candidates,6,votes);
-createVoteList(candidates,7,votes);
-createVoteList(candidates,8,votes);
-createVoteList(candidates,9,votes);
-createVoteList(candidates,10,votes);
-createVoteList(candidates,11,votes);
-createVoteList(candidates,12,votes);
-createVoteList(candidates,13,votes);
+votes=[]
+
+function createVoteArray(){
+    for(i=0;i<candidates.length;i++){
+        temparr=[];
+        for(j=0;j<candidates[i].length;j++){
+            temparr.push(0);
+        }
+        votes.push(temparr);
+    }
+    votes[2]=[0,0,0,0,0]
+}
+
+createVoteArray();
 
 function createPersistentCookie(cookieName, arrayData, expirationDays) {
     var expirationDate = new Date();
@@ -125,21 +128,10 @@ function updateVoteCount(index){
                 if(index<=1){
                     voteCountElement.innerText = votes[index][i-1];
                 }
-                else if(index>=2){
-                    if(i<=4){
-                        voteCountElement.innerText = votes[index][i-1];
-                        if(index>=2){
-                            var voteCountElement = document.getElementById(`candidate${i+4}-votes`);
-                            if (voteCountElement!=null && voteCountElement!=undefined){
-                                voteCountElement.innerText = votes[index+1][i-1];
-                            }
-                        }
-                    }
-                    else if(i>=5){
-                        voteCountElement.innerText = votes[index][i-5];
-                        var voteCountElement = document.getElementById(`candidate${i-4}-votes`);
-                        voteCountElement.innerText = votes[index-1][i-5];
-                    }
+                if(index>=2){
+
+                    voteCountElement = document.getElementById(`candidate${i}-votes`);
+                    voteCountElement.innerText = votes[index][i-candidates[index][0]];
                 }
         }
     }
@@ -180,16 +172,12 @@ function resetVoted(){
 
 function vote(index){
     syncVotes("down");
-    if(voted[index]==false){
         for(var i=(candidates[index][0]);i<=(candidates[index][candidates[index].length-1]);i++){
             //console.log("BP0");
-            if((document.getElementById(`candidate${i}`).checked)==true){
-                if(i<=4){
-                    votes[index][i-1]+=1;
-                }
-                else if(i>=5){
-                    votes[index][i-5]+=1;
-                }
+            var thestr=toString(i+(startno[index]-1))
+            console.log("Latest ", thestr, ' ', i, ' ', startno[index],' ', i+(startno[index]-1))
+            if((document.getElementById("candidate"+`${i+(startno[index]-1)}`).checked)==true){
+                votes[index][i-1]+=1;
 
                 document.getElementById('success-message').innerText = `Voted for candidate ${i} successfully!`;
                 document.getElementById('error-message').innerText = '';
@@ -197,19 +185,11 @@ function vote(index){
                 syncVotes("up");
             }
 
+            voted[index]==false;
             //updateVoteCount(index,i);
 
         }
         
-    }
-    else{
-        //alert("You've already voted!");
-        document.getElementById('error-message').innerText = 'You have already voted!';
-        document.getElementById('success-message').innerText = '';
-        /*for(var i=(candidates[index][0]);i<=(candidates[index][candidates[index].length-1]);i++){
-            //updateVoteCount(index,i);
-        }*/
-    }
     for(var i=(candidates[index][0]);i<=(candidates[index][candidates[index].length-1]);i++){
             console.log("Details - i=> ", " index=> ", index, i );
             updateVoteCount(index,i);
@@ -218,6 +198,7 @@ function vote(index){
 }
 
 function voteSC(){
+    syncVotes("down");
     for(var i=0;i<5;i++){
         if((document.getElementById(`candidate${i}`).checked)==true){
             votes[2][i]+=1;
@@ -226,12 +207,13 @@ function voteSC(){
             document.getElementById('error-message').innerText = '';
 
             syncVotes("up");
-            syncVotes("down");
+            //syncVotes("down");
         }
         var voteCountElement = document.getElementById(`candidate${i}-votes`);
         voteCountElement.innerText=votes[2][i];
 
     }
+    syncVotes("up");
 }
 
 function updateVoteSC(){
@@ -254,6 +236,7 @@ function toggleText() {
   }
 
 function saveVotes() {
+    syncVotes('down');
     var votesJson = JSON.stringify(votes);
     var blob = new Blob([votesJson], { type: "application/json" });
     saveAs(blob, "votes.json");
@@ -272,6 +255,83 @@ function updateVC(){
     }
 }
 
+function saveCookie(){
+     // Read the cookie value
+     var votesCookie = getCookie('CrispBiscuit');
+    
+     // Create a Blob with the cookie data
+     var blob = new Blob([votesCookie], { type: 'text/plain' });
+     
+     // Create a URL for the Blob
+     var url = URL.createObjectURL(blob);
+     
+     // Create a link element and trigger the download
+     var a = document.createElement('a');
+     a.href = url;
+     a.download = 'votes.txt';
+     a.click();
+     
+     // Release the URL object
+     URL.revokeObjectURL(url);
+
+}
+
+function createTxtFile(content, filename) {
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+function exportCookieAsTxt() {
+    const cookieName = 'CrispBiscuit';
+    const cookieValue = encodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + cookieName + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1"));
+    
+    if (cookieValue) {
+        const txtContent = `Cookie Name: ${cookieName}\nCookie Value: ${cookieValue}`;
+        createTxtFile(txtContent, 'cookie_export.txt');
+    } else {
+        console.log('Cookie not found');
+    }
+}
+
+function saveCookieAsTextFile(cookieName) {
+    const cookieValue = decodeURIComponent(document.cookie.replace(new RegExp(`(?:(?:^|.*;\\s*)${cookieName}\\s*\\=\\s*([^;]*).*$)|^.*$`), '$1'));
+  
+    if (cookieValue) {
+      const blob = new Blob([cookieValue], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+  
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = url;
+      a.download = `${cookieName}.txt`;
+  
+      document.body.appendChild(a);
+      a.click();
+  
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    } else {
+      console.error(`Cookie "${cookieName}" not found or has no value.`);
+    }
+  }
+
+function saveCookieTxt(){
+    var arr=[]
+    var cd=getCookieData("CrispBiscuit");
+    arr=cd;
+    console.log(arr);
+    console.log(cd);
+    console.log(getCookieData('CrispBiscuit'));
+
+    saveCookieAsTextFile("CrispBiscuit");
+}
+  
+
 //Ignore
 
 function getCookieData2(cookieName) {
@@ -285,4 +345,5 @@ function getCookieData2(cookieName) {
       }
     }
     return arrayData;
+
 }
