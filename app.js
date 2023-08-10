@@ -20,7 +20,7 @@ Copyright [2023] [Anuj Doddakaragi, Tejas Muttayanmath, Akhilesh Wade]
 var candidates=[
     [1,2,3,4],
     [1,2,3,4],
-    [1,2,3,4],[5,6,7,8],
+    [0,1,2,3,4],[5,6,7,8],
     [1,2,3,4],[5,6,7,8],
     [1,2,3,4],[5,6,7,8],
     [1,2,3,4],[5,6,7,8],
@@ -42,6 +42,7 @@ function createVoteList(candidates,index,votes){
             voted[i]=false;
         }
     }
+votes[2]=[0,0,0,0,0]
 }
 createVoteList(candidates,0,votes);
 createVoteList(candidates,1,votes);
@@ -216,6 +217,33 @@ function vote(index){
     console.log(votes)
 }
 
+function voteSC(){
+    for(var i=0;i<5;i++){
+        if((document.getElementById(`candidate${i}`).checked)==true){
+            votes[2][i]+=1;
+
+            document.getElementById('success-message').innerText = `Voted for candidate ${i} successfully!`;
+            document.getElementById('error-message').innerText = '';
+
+            syncVotes("up");
+            syncVotes("down");
+        }
+        var voteCountElement = document.getElementById(`candidate${i}-votes`);
+        voteCountElement.innerText=votes[2][i];
+
+    }
+}
+
+function updateVoteSC(){
+    syncVotes("down");
+    for(var i=0;i<5;i++){
+        var voteCountElement = document.getElementById(`candidate${i}-votes`);
+        voteCountElement.innerText=votes[2][i];
+
+    }
+    updateVoteCount(3);
+}
+
 function toggleText() {
     var hiddenText = document.getElementById("hidden-text");
     if (hiddenText.style.display === "none") {
@@ -231,7 +259,9 @@ function saveVotes() {
     saveAs(blob, "votes.json");
 }
 
-/*function getCookieData(cookieName) {
+//Ignore
+
+function getCookieData2(cookieName) {
     var cookies = document.cookie.split("; ");
     for (var i = 0; i < cookies.length; i++) {
       var cookie = cookies[i].split("=");
@@ -242,4 +272,4 @@ function saveVotes() {
       }
     }
     return arrayData;
-}*/
+}
