@@ -61,8 +61,12 @@ Copyright [2023] [Anuj Doddakaragi, Tejas Muttayanmath, Akhilesh Wade]
             <h1>Vote for Your Favorite Candidates</h1>
 
             <script>
-                
                 document.addEventListener('DOMContentLoaded', () => {
+
+                    document.getElementById('c0').addEventListener('click', () => {
+                        document.getElementById('candidate1').checked = true;
+                        console.log(document.getElementById('candidate1').checked);
+                    });
 
                     document.getElementById('c1').addEventListener('click', () => {
                         document.getElementById('candidate1').checked = true;
@@ -89,30 +93,23 @@ Copyright [2023] [Anuj Doddakaragi, Tejas Muttayanmath, Akhilesh Wade]
                     document.getElementById('c6').addEventListener('click', () => {
                         document.getElementById('candidate6').checked = true;
                     });
-
-                    document.getElementById('c7').addEventListener('click', () => {
-                        document.getElementById('candidate7').checked = true;
-
-                    });
-                    
-                    document.getElementById('c8').addEventListener('click', () => {
-                        document.getElementById('candidate8').checked = true;
-                    });
                 })
             </script>
 
             <div id="candidate-section-Head-Boy" class="candidate-section">
                 <h2 class="bh2">Sports Captain Candidates (Boys)</h2>
-                <button class="candidate-button" id="c1">B. Leeladhar Naik</button>
-                <button class="candidate-button" id="c2">Furkhan Gaanjewale</button>
-                <button class="candidate-button" id="c3">Pranav RM</button>
-                <button class="candidate-button" id="c4">Vihaan Meherwade </button>
-                <button class="submit-button" onclick="vote(2)">Submit Vote</button>
+                <button class="candidate-button" id="c0">B. Leeladhar Naik</button>
+                <button class="candidate-button" id="c1">Furkhan Gaanjewale</button>
+                <button class="candidate-button" id="c2">Azlaan Ali</button>
+                <button class="candidate-button" id="c3">Vihaan Meherwade </button>
+                <button class="candidate-button" id="c4">Pranava RM </button>
+                <button class="submit-button" onclick="voteSC()">Submit Vote</button>
                 <p id="success-message" class="success-message"></p>
                 <p id="error-message" class="error-message"></p>
             </div>
 
             <form>
+                <input type="radio" name="boys" value="candidate1" id="candidate0" style="display: none;">
                 <input type="radio" name="boys" value="candidate1" id="candidate1" style="display: none;">
                 <input type="radio" name="boys" value="candidate1" id="candidate2" style="display: none;">
                 <input type="radio" name="boys" value="candidate1" id="candidate3" style="display: none;">
@@ -122,9 +119,7 @@ Copyright [2023] [Anuj Doddakaragi, Tejas Muttayanmath, Akhilesh Wade]
             <div id="candidate-section-Head-Boy" class="candidate-section">
                 <h2 class="gh2">Sports Captain Candidates (Girl)</h2>
                 <button class="g-candidate-button" id="c5">Aditi Pawar</button>
-                <button class="g-candidate-button" id="c6">Namrata H Megharaj</button>
-                <button class="g-candidate-button" id="c7">Candidate 3</button>
-                <button class="g-candidate-button" id="c8">Candidate 4</button>
+                <button class="g-candidate-button" id="c6">Namratha H Megharaj</button>
                 <button class="g-submit-button" onclick="vote(3)">Submit Vote</button>
                 <p id="success-message" class="success-message"></p>
                 <p id="error-message" class="error-message"></p>
@@ -146,10 +141,11 @@ Copyright [2023] [Anuj Doddakaragi, Tejas Muttayanmath, Akhilesh Wade]
     <div id="hidden-text" style="display: none;">
         <div>
             <h2>Current Vote Count(Boys):</h2>
-            <p>Candidate 1: <span id="candidate1-votes">0</span> votes</p>
-            <p>Candidate 2: <span id="candidate2-votes">0</span> votes</p>
-            <p>Candidate 3: <span id="candidate3-votes">0</span> votes</p>
-            <p>Candidate 4: <span id="candidate4-votes">0</span> votes</p>
+            <p>B. Leeladhar Naik: <span id="candidate0-votes">0</span> votes</p>
+            <p>Furkhan Gaanjewale: <span id="candidate1-votes">0</span> votes</p>
+            <p>Azlaan Ali: <span id="candidate2-votes">0</span> votes</p>
+            <p>Vihaan Meherwade: <span id="candidate3-votes">0</span> votes</p>
+            <p>Pranava RM: <span id="candidate4-votes">0</span> votes</p>
         </div>
         <div>
             <h2>Current Vote Count(Girls):</h2>
