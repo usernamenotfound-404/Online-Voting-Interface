@@ -27,13 +27,14 @@ Copyright [2023] [Anuj Doddakaragi, Tejas Muttayanmath, Akhilesh Wade]
             margin-top: 20px;
         }
         body {
-            background-image: url('2.png');
+            background-image: url('img.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
         }
     </style>
     <link rel="stylesheet" href="../style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 </head>
 <body>
     <script src="../app.js"></script>
@@ -64,7 +65,7 @@ Copyright [2023] [Anuj Doddakaragi, Tejas Muttayanmath, Akhilesh Wade]
                 document.addEventListener('DOMContentLoaded', () => {
 
                     document.getElementById('c0').addEventListener('click', () => {
-                        document.getElementById('candidate1').checked = true;
+                        document.getElementById('candidate0').checked = true;
                         console.log(document.getElementById('candidate1').checked);
                     });
 

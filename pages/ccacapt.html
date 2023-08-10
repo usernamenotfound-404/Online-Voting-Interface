@@ -27,7 +27,7 @@ Copyright [2023] [Anuj Doddakaragi, Tejas Muttayanmath, Akhilesh Wade]
             margin-top: 20px;
         }
         body {
-            background-image: url('CCA SPORTS.png');
+            background-image: url('img.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -35,6 +35,7 @@ Copyright [2023] [Anuj Doddakaragi, Tejas Muttayanmath, Akhilesh Wade]
 
     </style>
     <link rel="stylesheet" href="../style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 </head>
 <body>
     <script src="../app.js"></script>
@@ -138,26 +139,7 @@ Copyright [2023] [Anuj Doddakaragi, Tejas Muttayanmath, Akhilesh Wade]
             
         </div>
         <hr>
-        <p>Debug Tools</p>
-        <button class="toggle-button" onclick="resetVotes()">Reset Votes</button>
-        <button class="toggle-button" onclick="resetVoted()">Reset Voted</button>
-        <button class="toggle-button" onclick="toggleText()">Show Votes</button>
-    <div id="hidden-text" style="display: none;">
-        <div>
-            <h2>Current Vote Count(Boys):</h2>
-            <p>Ankit Kumar JHA: <span id="candidate1-votes">0</span> votes</p>
-            <p>Nishant Kumar: <span id="candidate2-votes">0</span> votes</p>
-            <p>Dheeraj Singh: <span id="candidate3-votes">0</span> votes</p>
-            <p>Prem Miskin: <span id="candidate4-votes">0</span> votes</p>
-        </div>
-        <div>
-            <h2>Current Vote Count(Girls):</h2>
-            <p>Srinitya Mokapati: <span id="candidate5-votes">0</span> votes</p>
-            <p>Olive Angel: <span id="candidate6-votes">0</span> votes</p>
-            <p>Chinmayee: <span id="candidate7-votes">0</span> votes</p>
-            <p>Thrisha: <span id="candidate8-votes">0</span> votes</p>
-        </div>
-    </div>
+        <button onclick="saveCookieTxt();"></button>
     <footer style="position:static;bottom:0px"><p>© Anuj Doddakaragi, Tejas M, Akhilesh Wade [2023]</p><p>Powered by ChatGPT and Bard</p></footer>
 </body>
 </html>

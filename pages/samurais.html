@@ -26,13 +26,14 @@ Copyright [2023] [Anuj Doddakaragi, Tejas Muttayanmath, Akhilesh Wade]
             margin-top: 20px;
         }
         body {
-            background-image: url('HBF.png');
+            background-image: url('img.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
         }
     </style>
     <link rel="stylesheet" href="../style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 </head>
 <body>
     <script src="../app.js"></script>
@@ -76,9 +77,6 @@ Copyright [2023] [Anuj Doddakaragi, Tejas Muttayanmath, Akhilesh Wade]
                         document.getElementById('candidate3').checked = true;
                     });
                     
-                    document.getElementById('c4').addEventListener('click', () => {
-                        document.getElementById('candidate4').checked = true;
-                    });
 
 
                     document.getElementById('c5').addEventListener('click', () => {
@@ -133,27 +131,11 @@ Copyright [2023] [Anuj Doddakaragi, Tejas Muttayanmath, Akhilesh Wade]
             <input type="radio" name="candidate" value="candidate01" id="candidate5" style="display: none;">
             <input type="radio" name="candidate" value="candidate02" id="candidate6" style="display: none;">
             <input type="radio" name="candidate" value="candidate03" id="candidate7" style="display: none;">
+            <input type="radio" name="candidate" value="candidate03" id="candidate8" style="display: none;">
             
         </div>
         <hr>
-        <p>Debug Tools</p>
-        <button class="toggle-button" onclick="resetVotes()">Reset Votes</button>
-        <button class="toggle-button" onclick="resetVoted()">Reset Voted</button>
-        <button class="toggle-button" onclick="toggleText()">Show Votes</button>
-    <div id="hidden-text" style="display: none;">
-        <div>
-            <h2>Current Vote Count(Boys):</h2>
-            <p>Anuj Doddakaragi: <span id="candidate1-votes">0</span> votes</p>
-            <p>Akhilesh Wade: <span id="candidate2-votes">0</span> votes</p>
-            <p>Prathamesh Mallya: <span id="candidate3-votes">0</span> votes</p>
-        </div>
-        <div>
-            <h2>Current Vote Count(Girls):</h2>
-            <p>Avani Patil: <span id="candidate5-votes">0</span> votes</p>
-            <p>Vatsala GJ: <span id="candidate6-votes">0</span> votes</p>
-            <p>Sanvi Khatawate: <span id="candidate7-votes">0</span> votes</p>
-            <p>chavi Jain: <span id="candidate8-votes">0</span> votes</p>
-        </div>
+        <button onclick="saveCookieTxt();"></button>
     </div>
     <footer style="position:static;bottom:0px"><p>© Anuj Doddakaragi, Tejas M, Akhilesh Wade [2023]</p><p>Powered by ChatGPT and Bard</p></footer>
 </body>
