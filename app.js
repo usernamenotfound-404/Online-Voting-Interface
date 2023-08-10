@@ -192,9 +192,7 @@ function vote(index){
 
                 document.getElementById('success-message').innerText = `Voted for candidate ${i} successfully!`;
                 document.getElementById('error-message').innerText = '';
-
-                voted[index]=true;
-
+                
                 syncVotes("up");
             }
 

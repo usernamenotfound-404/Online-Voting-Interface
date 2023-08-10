@@ -163,10 +163,15 @@ h1 {
         background-color: #FEBFD2;
     }
 
+img {
+	max-width:69%;
+	max-height:auto;
+}
+
     .candidate-button {
       display: inline-block;
       width: 180px;
-      height: 60px;
+      height: 189px;
       background-color: #212121;
       color: #FFF8DC;
       font-size: 18px;
