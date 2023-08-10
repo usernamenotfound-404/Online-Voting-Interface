@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Votes (Counted)
+        </title>
+        <script src="./app.js"></script>
+        <link rel="stylesheet"  ef="./style.css">
+    </head>
+
+    <body>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+
+                passcode=prompt("Enter Passcode-");
+
+                if(passcode==6989420){
+                    syncVotes("down");
+                    updateVC();
+                }
+                else{
+                    window.location.replace("./index.html");
+                }
+            })
+        </script>
+
+        <h1>
+            Votes:
+        </h1>
+        <hr>
+
+        <table>
+            <h2>
+                Head Boy
+            </h2>
+            <tr>
+                <th>Atharv Ammanavar</th>
+                <td id="v000">0</td>
+            </tr>
+            <tr>
+                <th>Aditya Vakkund</th>
+                <td id="v001">0</td>
+            </tr>
+            <tr>
+                <th>Rohit Doddamani</th>
+                <td id="v002">0</td>
+            </tr>
+            <tr>
+                <th>Heet Jain</th>
+                <td id="v003">0</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <table>
+            <h2>
+                Head Girl
+            </h2>
+            <tr>
+                <th>Kainat Bepari</th>
+                <td id="v010">0</td>
+            </tr>
+            <tr>
+                <th>Arushi Jha</th>
+                <td id="v011">0</td>
+            </tr>
+            <tr>
+                <th>Lakshita Jain</th>
+                <td id="v012">0</td>
+            </tr>
+            <tr>
+                <th>Madeeha</th>
+                <td id="v013">0</td>
+            </tr>
+        </table>
+        
+        <hr>
+
+        <table>
+            <h2>
+                Sports Captain Boys
+            </h2>
+            <tr>
+                <th>B. Leeladhar Naik</th>
+                <td id="v020">0</td>
+            </tr>
+            <tr>
+                <th>Furkhan Gaanjewale</th>
+                <td id="v021">0</td>
+            </tr>
+            <tr>
+                <th>Azlaan Ali</th>
+                <td id="v022">0</td>
+            </tr>
+            <tr>
+                <th>Vihaan Meherwade</th>
+                <td id="v023">0</td>
+            </tr>
+            <tr>
+                <th>Pranava RM</th>
+                <td id="v024">0</td>
+            </tr>
+        </table>
+
+        <table>
+            <h2>
+                Sports Captain Girls
+            </h2>
+            <tr>
+                <th>Aditi Pawar</th>
+                <td id="v030">0</td>
+            </tr>
+            <tr>
+                <th>Namratha Megharaj</th>
+                <td id="v031">0</td>
+            </tr>
+        </table>
+        
+        <hr>
+
+        <table>
+            <h2>
+                CCA Captain Boys
+            </h2>
+            <tr>
+                <th>Ankit Kumar Jha</th>
+                <td id="v040">0</td>
+            </tr>
+            <tr>
+                <th>Nishant Kumar</th>
+                <td id="v041">0</td>
+            </tr>
+            <tr>
+                <th>Dheeraj Kumar Singh</th>
+                <td id="v042">0</td>
+            </tr>
+            <tr>
+                <th>Prem Miskin</th>
+                <td id="v043">0</td>
+            </tr>
+        </table>
+
+        <table>
+            <h2>
+                CCA Captain Girls
+            </h2>
+            <tr>
+                <th>Srinithya</th>
+                <td id="v050">0</td>
+            </tr>
+            <tr>
+                <th>Olive Angel</th>
+                <td id="v051">0</td>
+            </tr>
+            <tr>
+                <th>Chinmayee</th>
+                <td id="v052">0</td>
+            </tr>
+            <tr>
+                <th>Trisha</th>
+                <td id="v053">0</td>
+            </tr>
+        </table>
+        
+        <hr>
+
+        <table>
+            <h2>
+                Knights Captain Boys
+            </h2>
+            <tr>
+                <th>Aashrith S Pramod</th>
+                <td id="v060">0</td>
+            </tr>
+            <tr>
+                <th>Abdul Sami</th>
+                <td id="v061">0</td>
+            </tr>
+            <tr>
+                <th>Mohith Jain</th>
+                <td id="v062">0</td>
+            </tr>
+        </table>  
+        
+        <table>
+            <h2>
+                Knights Captain Girls
+            </h2>
+            <tr>
+                <th>Charitha Lekireddy</th>
+                <td id="v070">0</td>
+            </tr>
+            <tr>
+                <th>Dhrita Madhurkar</th>
+                <td id="v071">0</td>
+            </tr>
+            <tr>
+                <th>Ananya Patil</th>
+                <td id="v072">0</td>
+            </tr>
+            <tr>
+                <th>C Niharika</th>
+                <td id="v073">0</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <table>
+            <h2>
+                Samurais Captain Boys
+            </h2>
+            <tr>
+                <th>Anuj Doddakaragi</th>
+                <td id="v080">0</td>
+            </tr>
+            <tr>
+                <th>Akhilesh Wade</th>
+                <td id="v081">0</td>
+            </tr>
+            <tr>
+                <th>Prathamesh Mallya</th>
+                <td id="v082">0</td>
+            </tr>
+        </table>  
+
+        <table>
+            <h2>
+                Samurais Captain Girls
+            </h2>
+            <tr>
+                <th>Avani Patil</th>
+                <td id="v090">0</td>
+            </tr>
+            <tr>
+                <th>Vatsala GJ</th>
+                <td id="v091">0</td>
+            </tr>
+            <tr>
+                <th>Saanvi Khatawate</th>
+                <td id="v092">0</td>
+            </tr>
+            <tr>
+                <th>Chavi Jain</th>
+                <td id="v093">0</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <table>
+            <h2>
+                Spartans Captain Boys
+            </h2>
+            <tr>
+                <th>Tejas Muttayanmath</th>
+                <td id="v100">0</td>
+            </tr>
+            <tr>
+                <th>Aman Pandey</th>
+                <td id="v101">0</td>
+            </tr>
+            <tr>
+                <th>Aasim</th>
+                <td id="v102">0</td>
+            </tr>
+            <tr>
+                <th>Omama Shaikh</th>
+                <td id="v103">0</td>
+            </tr>
+        </table>
+
+        <table>
+            <h2>
+                Spartans Captain Girls
+            </h2>
+            <tr>
+                <th>Mahi Bhimani</th>
+                <td id="v110">0</td>
+            </tr>
+            <tr>
+                <th>Yashica Gokarna</th>
+                <td id="v111">0</td>
+            </tr>
+        </table>
+        
+        <hr>
+
+        <table>
+            <h2>
+                Vikings Captain Boys
+            </h2>
+            <tr>
+                <th>Anubhav Kumar Jha</th>
+                <td id="v120">0</td>
+            </tr>
+            <tr>
+                <th>Mohith Krishna</th>
+                <td id="v121">0</td>
+            </tr>
+        </table>
+
+        <table>
+            <h2>
+                Vikings Captain Girls
+            </h2>
+            <tr>
+                <th>Impana Muttalli</th>
+                <td id="v130">0</td>
+            </tr>
+            <tr>
+                <th>Nidabushra Sayed</th>
+                <td id="v131">0</td>
+            </tr>
+        </table>
+        
+        <hr>
+        
+        <hr>
+
+        
+        <hr>
+
+    </body>
+</html>

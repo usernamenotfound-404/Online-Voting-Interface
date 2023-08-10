@@ -20,12 +20,12 @@ Copyright [2023] [Anuj Doddakaragi, Tejas Muttayanmath, Akhilesh Wade]
 var candidates=[
     [1,2,3,4],
     [1,2,3,4],
-    [0,1,2,3,4],[5,6,7,8],
+    [0,1,2,3,4],[5,6],
     [1,2,3,4],[5,6,7,8],
-    [1,2,3,4],[5,6,7,8],
-    [1,2,3,4],[5,6,7,8],
-    [1,2,3,4],[5,6,7,8],
-    [1,2,3,4],[5,6,7,8],
+    [1,2,3],[5,6,7,8],
+    [1,2,3],[5,6,7,8],
+    [1,2,3,4],[5,6],
+    [1,2],[5,6],
 
 ];
 var votes=[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
@@ -257,6 +257,19 @@ function saveVotes() {
     var votesJson = JSON.stringify(votes);
     var blob = new Blob([votesJson], { type: "application/json" });
     saveAs(blob, "votes.json");
+}
+
+function updateVC(){
+    for(i=0;i<14;i++){
+        for(j=0;j<candidates[i].length;j++){
+            if(i<10){
+                document.getElementById('v0'+`${i}`+`${j}`).innerText=votes[i][j];
+            }
+            else if(i>9){
+                document.getElementById('v'+`${i}`+`${j}`).innerText=votes[i][j];
+            }
+        }
+    }
 }
 
 //Ignore
